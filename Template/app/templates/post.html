@@ -1,0 +1,124 @@
+
+  
+  {% extends "base.html" %}
+  {% block content %}
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>{{post[1]}}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by <a href="#">Manuel Alba</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">{{post[2]}}</p>
+
+                <hr>
+
+                <!-- Blog Comments -->
+
+                <!-- Comments Form -->
+                <div class="well">
+                    <h4>Deja un comentario :</h4>
+                    <form role="form" action="/post/{{post[0]}}" method="post" enctype="application/x-www-form-urlencoded" > 
+                        <div class="form-group">
+                            <textarea name="comentarios" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+
+                <hr>
+
+                <!-- Posted Comments -->
+
+                {%for comentario in comentarios %}
+                <!-- Comment -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="/comentario/{{comentario[0]}}" >{{comentario[1]}} {{comentario[2]}}</a>
+                            <small><a href="/borrar/{{comentario[0]}}" >Borrar</a></small>
+                        </h4>
+                        {{comentario[3]}} 
+                       </div>
+                </div>
+                {%endfor%}
+
+            
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+            <div class="well">
+                    <h4>Proyecto de base de datos </h4>
+                    <p>Esto es un ejemplo de la ayudantia hecha por Manuel Alba.</p>
+                </div>
+
+
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Categorias que lo contiene :</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-unstyled">
+                              
+                                {% for categoria in categorias %}
+                                <li><a href="/categoria/{{categoria[0]}}">{{categoria[1]}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+  
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Bases de datos 2017</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+
+     {% endblock %}
