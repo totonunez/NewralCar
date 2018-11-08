@@ -13,42 +13,64 @@ CREATE SCHEMA public;""" #Esta linea eliminará todas las tablas creadas en la b
 cur.execute(sql) #ejecutar la accion anterior
 
 sql ="""
-CREATE TABLE autos 
-           (patente PRIMARY KEY, largo varchar(40), ancho varchar, alto text, creado timestamp, peso_neto, peso_max, tipo_combustible, tipo_auto, cant_pasajeros, NumeroAro);
-"""
-
-cur.execute(sql)
-
-
-sql ="""
-CREATE TABLE choques 
-           (id_evento PRIMARY KEY, ciudad varchar(40), creado timestamp);
+CREATE TABLE autos
+           (id_auto serial PRIMARY KEY, largo varchar(40), ancho varchar, alto varchar, peso_neto varchar,
+ peso_maximo varchar , tipo_combustible varchar, tipo_auto varchar, maximo_pasajeros varchar,
+ num_aro varchar, texto text, creado timestamp);
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE categorias_posts 
-           (categoria_id integer, post_id integer);
+CREATE TABLE mediciones
+           ( id_sensor id_auto fecha hora serial PRIMARY KEY, magnitud varchar(40), creado timestamp);
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE  cliente
-           (id serial PRIMARY KEY,rol integer, nombre varchar(40),apellido varchar(40),
-           email varchar(100),foto jpg,fecha_nacimiento, creado timestamp);
+CREATE TABLE sensores
+           (id_sensor serial PRIMARY KEY, nombre varchar(40), presicion integer, creado timestamp);
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE comentarios
-           (id serial PRIMARY KEY, comentario varchar(140), post_id integer, usuario_id integer, creado timestamp);
+CREATE TABLE clientes
+           (id_usuario serial PRIMARY KEY, nombre varchar(40),apellido varchar(40),
+           email varchar(100),passwd varchar(255),celular intiger, foto png, creado timestamp);
 """
 
 cur.execute(sql)
 
+sql ="""
+CREATE TABLE penalizaciones
+           (id  PRIMARY KEY, comentario varchar(140), monto integer, comentario integer, fecha_incidente date,
+fecha_pago date, creado timestamp);
+"""
+
+cur.execute(sql)
+
+sql = """
+CREATE TABLE involucrados
+           (id_auto, id_choque, fecha ,hora serial PRIMERARY KEY), numero_de_afectados
+
+"""
+
+cur.execute(sql)
+
+sql= """
+CREATE TABLE penalizaciones
+           (id_auto, fecha, hora serial PRIMARY KEY), latitud varchar(40), longitud varchar
+
+"""
+
+cur.execute(sql)
+sql = """
+CREATE TABLE choques
+           (id_evento serial PRIMARY KEY), ciudad varchar(40), calle varchar, numeracion intiger, creado timestap
+
+"""
 
 conn.commit()
 cur.close()
