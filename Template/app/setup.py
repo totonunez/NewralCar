@@ -23,7 +23,7 @@ cur.execute(sql)
 
 sql ="""
 CREATE TABLE mediciones
-           ( id_sensor id_auto fecha hora serial PRIMARY KEY, magnitud varchar(40), creado timestamp);
+           ( id_sensor, id_auto, fecha, hora serial PRIMARY KEY, magnitud varchar(40), creado timestamp);
 """
 
 cur.execute(sql)
@@ -45,32 +45,41 @@ cur.execute(sql)
 
 sql ="""
 CREATE TABLE penalizaciones
-           (id  PRIMARY KEY, comentario varchar(140), monto integer, comentario integer, fecha_incidente date,
-fecha_pago date, creado timestamp);
+           (id_penalizacion serial PRIMARY KEY), monto integer, comentario integer, fecha_incidente date,
+fecha_pago date, creado timestamp;
 """
 
 cur.execute(sql)
 
 sql = """
 CREATE TABLE involucrados
-           (id_auto, id_choque, fecha ,hora serial PRIMERARY KEY), numero_de_afectados
+           (id_auto, id_choque, fecha ,hora serial PRIMERARY KEY), numero_de_afectados, creado timestap
 
 """
 
 cur.execute(sql)
 
 sql= """
-CREATE TABLE penalizaciones
-           (id_auto, fecha, hora serial PRIMARY KEY), latitud varchar(40), longitud varchar
+CREATE TABLE debe
+           (id_usuario, id_penalizacion serial PRIMARY KEY), comentario varchar(140),creado timestap
 
 """
 
 cur.execute(sql)
+
 sql = """
 CREATE TABLE choques
            (id_evento serial PRIMARY KEY), ciudad varchar(40), calle varchar, numeracion intiger, creado timestap
 
 """
+cur.execute(sql)
+
+sql = """
+CREATE TABLE GPS
+           (id_auto, fecha, hora serial PRIMARY KEY), latitud varchar(40), longitud varchar, creado timestap
+
+"""
+cur.execute(sql)
 
 conn.commit()
 cur.close()
