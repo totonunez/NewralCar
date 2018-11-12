@@ -4,8 +4,8 @@ conn = psycopg2.connect("dbname=%s user=%s password=%s"%(database,user,passwd))
 cur = conn.cursor()
 
 sql ="""
-insert into categorias (nombre) values ('Tecnologia '),('Video Juegos '),('Geek'),
-('Cine'),('Mundo Marvel');
+insert into AUTOS (largo) values( (2.4),(3.4),(3.1),
+(2.8),(2.7),(2.8),(2.1),(2.0), now() );
 """
 cur.execute(sql)
 sql ="""
