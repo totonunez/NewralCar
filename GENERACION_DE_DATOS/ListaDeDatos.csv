@@ -1,0 +1,21 @@
+ListaDeSensores,,N.º Aro,TipoAuto,TipoCombustible
+Sensor De Presión,,Aro 14,auto deportivo,Gasolina 95 octanos
+Sensor De Presión De Sobrealimentacion,,Aro 15,carro,Bioetanol
+Sensor De Masa De Aire,,Aro 16,city car,Diésel normal
+Sensor De Alta Presion,,Aro 17,crossover,Diésel plus
+Sonda Lambda,,,hatchback,Biodiésel
+Sensor De Velocidad De Rotacion,,,monovolumen,"Diésel 1D,2D y 4D"
+Sensor De Presión del Depósito,,,pickup,Gas Natural
+Transmisión De Posición Del Pedal,,,sedan,
+Sensor de Angulo ,,,station wagon,
+,,,suv,
+Sensor de Inclinacion,,,todoterreno,
+Sensor De Aceleracion,,,,
+Sensor De Ocupacion De Asiento,,,,
+Sensor de Magnitud De Giro o Viraje,,,,
+Sensor De Aceleracion transversal,,,,
+Sensor de Inclinacion,,,,
+Sensor De Vuelco,,,,
+Sensor De velocidad de giro Ruedas,,,,
+Sensor De lluvia,,,,
+Sensor Telemétrico,,,,
