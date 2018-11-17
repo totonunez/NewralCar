@@ -1,5 +1,6 @@
 from faker import Faker
-from time import time 
+from time import time
+
 
 fake = Faker()
 tiempo = time()

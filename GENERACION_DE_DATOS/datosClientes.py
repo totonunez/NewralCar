@@ -7,16 +7,18 @@ tiempo = time()
 print(fake.name())
 x = 1
 print("CLIENTES")
-print("insert into choques (id_usuario, nobre, apellido, correo, celular, foto, fecha_nacimiento) values")
+print("insert into choques (id_usuario, nombre, apellido, direccion, correo, celular, foto, fecha_nacimiento) values")
 
 while (x<10):
-    print("({},'{}','{}','{}'),
-    ".format(x,fake.name(),fake.address(), fake.email(),fake.url()))
+    y = fake.name()
+    a,b=y.split()
+    print("({},'{}','{}','{}'),".format(x,a,b,fake.address(), fake.email(),fake.url(),fake.date()))
     x = x+1
+
 print(")")
 
 final = time()- tiempo
-print("Tiempo total en crearse todos los datos es ", final)
+print "Tiempo total en crearse todos los datos es" , final
 
 
 

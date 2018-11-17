@@ -1,5 +1,13 @@
 from faker import Faker
 from time import time 
+from random import choice, random
+import csv
+
+lst =[]
+with open('ListaDeDatos.csv') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+         lst.append(row['Ciudades'])
 
 fake = Faker()
 tiempo = time()
@@ -14,3 +22,5 @@ print(")")
 
 final = time()- tiempo
 print("Tiempo total en crearse todos los datos es ", final)
+
+

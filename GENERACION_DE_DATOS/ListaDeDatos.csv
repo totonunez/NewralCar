@@ -1,21 +1,26 @@
-ListaDeSensores,,N.º Aro,TipoAuto,TipoCombustible
-Sensor De Presión,,Aro 14,auto deportivo,Gasolina 95 octanos
-Sensor De Presión De Sobrealimentacion,,Aro 15,carro,Bioetanol
-Sensor De Masa De Aire,,Aro 16,city car,Diésel normal
-Sensor De Alta Presion,,Aro 17,crossover,Diésel plus
-Sonda Lambda,,,hatchback,Biodiésel
-Sensor De Velocidad De Rotacion,,,monovolumen,"Diésel 1D,2D y 4D"
-Sensor De Presión del Depósito,,,pickup,Gas Natural
-Transmisión De Posición Del Pedal,,,sedan,
-Sensor de Angulo ,,,station wagon,
-,,,suv,
-Sensor de Inclinacion,,,todoterreno,
-Sensor De Aceleracion,,,,
-Sensor De Ocupacion De Asiento,,,,
-Sensor de Magnitud De Giro o Viraje,,,,
-Sensor De Aceleracion transversal,,,,
-Sensor de Inclinacion,,,,
-Sensor De Vuelco,,,,
-Sensor De velocidad de giro Ruedas,,,,
-Sensor De lluvia,,,,
-Sensor Telemétrico,,,,
+ListaDeSensores,,N.º Aro,TipoAuto,TipoCombustible,,,,,,Ciudades
+Sensor De Presión,,Aro 14,auto deportivo,Gasolina 95 octanos,,,,,,Gran Concepción
+Sensor De Presión De Sobrealimentacion,,Aro 15,carro,Bioetanol,,,,,,Gran Valparaíso
+Sensor De Masa De Aire,,Aro 16,city car,Diésel normal,,,,,,Gran La Serena
+Sensor De Alta Presion,,Aro 17,crossover,Diésel plus,,,,,,Antofagasta
+Sonda Lambda,,,hatchback,Biodiésel,,,,,,Gran Temuco
+Sensor De Velocidad De Rotacion,,,monovolumen,"Diésel 1D,2D y 4D",,,,,,Gran Rancagua
+Sensor De Presión del Depósito,,,pickup,Gas Natural,,,,,,Gran Iquique
+Transmisión De Posición Del Pedal,,,sedan,,,,,,,Talca
+Sensor de Angulo ,,,station wagon,,,,,,,Arica
+,,,suv,,,,,,,Gran Puerto Montt
+Sensor de Inclinacion,,,todoterreno,,,,,,,Gran Chillán
+Sensor De Aceleracion,,,,,,,,,,Los Ángeles
+Sensor De Ocupacion De Asiento,,,,,,,,,,Calama
+Sensor de Magnitud De Giro o Viraje,,,,,,,,,,Copiapó
+Sensor De Aceleracion transversal,,,,,,,,,,Osorno
+Sensor de Inclinacion,,,,,,,,,,Gran Quillota
+Sensor De Vuelco,,,,,,,,,,Valdivia
+Sensor De velocidad de giro Ruedas,,,,,,,,,,Punta Arenas
+Sensor De lluvia,,,,,,,,,,Gran San Antonio
+Sensor Telemétrico,,,,,,,,,,Curicó
+,,,,,,,,,,Ovalle
+,,,,,,,,,,Linares
+,,,,,,,,,,Los Andes
+,,,,,,,,,,Melipilla
+,,,,,,,,,,San Felipe
