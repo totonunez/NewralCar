@@ -11,7 +11,7 @@ print("insert into choques (id_usuario, nombre, apellido, direccion, correo, cel
 while (x<10):
     y = fake.name()
     a,b=y.split()
-    print("({},'{}','{}','{}'),".format(x,a,b,fake.address(), fake.email(),fake.url(),fake.date()))
+    print("('{}','{}','{}','{}'),".format(x,a,b,fake.address(), fake.email(),fake.url(),fake.date()))
     x = x+1
 
 print(")")
