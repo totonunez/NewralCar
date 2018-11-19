@@ -16,3 +16,16 @@ print(")")
 
 final = time()- tiempo
 print("Tiempo total en crearse todos los datos es ", final)
+sadasdasdas
+da
+sd
+as
+das
+d
+asdas
+d
+as
+das
+d
+asdas
+wd
