@@ -4,8 +4,9 @@ from random import random, choice
 
 
 fake = Faker()
+x = 0
 tiempo = time()
-combustible = ["gasolina98", "gasolina95", "gasolina93", "diesel"]
+combustible = ["gasolina98", "gasolina95", "gasolina93", "Diesel"]
 tautos = ["Sedán", "Station Wagon", "Doble Cabina", "Hatchback","SUV", "Furgón"]
 print("AUTOS")
 print("insert into autos (id_auto, largo, ancho, alto, peso_neto, peso_max, tipo_combustible, tipo_auto, cant_pasajero, numeroAro) values")
