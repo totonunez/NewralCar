@@ -5,10 +5,10 @@ fake = Faker()
 tiempo = time()
 print("DEBE")
 print("insert into choques (id_usuario,id_penalizacion, comentario) values")
+usuario
 
 while (x<10):
-    print("({},'{}','{}','{}'),
-    ".format(x,fake.name(),fake.address(), fake.email(),fake.url()))
+    print("({},'{}','{}'),".format(usuario,penalizacion,fake.text()))
     x = x+1
 print(")")
 
