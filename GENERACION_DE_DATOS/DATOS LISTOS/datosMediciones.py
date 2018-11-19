@@ -6,10 +6,10 @@ tiempo = time()
 
 print("MEDICIONES")
 print("insert into choques (id_sensores,id_auto, id_registro) values")
-while (x<10):
-    print("({},'{}','{}','{}'),
-    ".format(x,fake.name(),fake.address(), fake.email(),fake.url()))
-    x = x+1
+for x in range(0,10):
+    for y in range(0,5):
+        for z in range(0,5):
+            print("({},'{}','{}'),".format(x,y,z))
 print(")")
 
 final = time()- tiempo

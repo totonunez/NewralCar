@@ -12,7 +12,7 @@ print("insert into autos (id_auto, largo, ancho, alto, peso_neto, peso_max, tipo
 
 while (x<10):
     peso_neto = random.uniform(2700, 3860)
-    print("({},'{}' (mm) ,'{}' (mm),'{}' (mm),'{}' (mm), '{}' (mm),'{}' (mm),'{}' (mm),'{}' pasajeros, '{}' ),".format(x,random.uniform(3500, 5000),random.uniform(1700, 1900), random.uniform(1300, 1800),peso_neto + random.uniform(500, 1000), random.choice(combustible), random.choice(tautos), choice(2,4,6), choice(24,26,28) ))
+    print("({},'{}' (mm) ,'{}' (mm),'{}' (mm),'{}' (mm), '{}' (mm),'{}' (mm),'{}' (mm),'{}' pasajeros, '{}' ),".format(x,random.uniform(3500, 5000),random.uniform(1700, 1900), random.uniform(1300, 1800),peso_neto + random.uniform(500, 1000), choice(combustible), choice(tautos), choice([2,4,6]), choice([24,26,28]) ))
     x = x+1
 print(")")
 
