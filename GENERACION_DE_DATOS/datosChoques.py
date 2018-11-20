@@ -17,10 +17,9 @@ tiempo = time()
 print("CHOQUES")
 print("insert into choques (id_evento, ciudad,calle, numeración) values")
 
-while (x<10):
+for x in range(0,10):
     ciudad = choice(Ciudades)
-    print("({},'{}','{}','{}'),".format(x,ciudad,choice(), fake.email())
-    x = x+1
+    print("({},'{}','{}','{}'),".format(x,ciudad,choice(), randint(20,3000))
 print(")")
 
 final = time()- tiempo

@@ -8,11 +8,9 @@ x = 1
 print("CLIENTES")
 print("insert into choques (id_usuario, nombre, apellido, direccion, correo, celular, foto, fecha_nacimiento) values")
 
-while (x<10):
+for x in range(0,10):
     y = fake.name()
-    a,b=y.split()
-    print("('{}','{}','{}','{}'),".format(x,a,b,fake.address(), fake.email(),fake.url(),fake.date()))
-    x = x+1
+    print("({},'{}','{}','{}','{}','{}','{}','{}'),".format(x,y.split()[0],y.split()[1],fake.address(), fake.email(),fake.phone_number(),fake.url(),fake.date()))
 
 print(")")
 
