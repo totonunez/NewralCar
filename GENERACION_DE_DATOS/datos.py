@@ -7,5 +7,3 @@ for i in range(10):
     print(fake.name()," ",fake.email())
 lapsoTiempo = time() - hola
 print(lapsoTiempo)
-
-w

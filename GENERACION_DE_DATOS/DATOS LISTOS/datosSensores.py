@@ -18,11 +18,9 @@ presicion=['10%','50%','25%', '100%']
 tipo_data=['float','int', 'double', 'bool']
 x=1
 for i in seq:
-    precision2=random.choice(presicion)
-    tipo_data2=random.choice(tipo_data)
-    print("({},'{}','{}','{}'),".format(x, i, presicion, tipo_data2)
+    print("({},'{}','{}','{}'),".format(x, i, choice(presicion), choice(tipo_data)))
     x=x+1
-    
+print(')')
 '''
 while (x<10):
     print("({},'{}','{}'),".format(x,choice(["Sensor De Presion","Sensor De Presion De Sobrealimentacion",
