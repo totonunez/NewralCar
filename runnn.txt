@@ -1,0 +1,9 @@
+Para ejecutar :
+  1 run .py 
+para editar
+  1 812027669
+  
+  8 1 2 0 2 7 66 9
+  2 bd
+  hex
+  
