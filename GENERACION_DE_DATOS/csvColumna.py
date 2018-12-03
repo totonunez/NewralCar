@@ -2,6 +2,9 @@ import csv
 lst =[]
 with open('Ciudades.csv') as csvfile:
     reader = csv.DictReader(csvfile)
-    print(type(reader))
+    print(reader)
     for row in reader:
-        print(row)
+        lst.append(row)
+    print(lst)
+    for x in lst:
+        print(x['Arica'])
