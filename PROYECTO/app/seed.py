@@ -37,8 +37,7 @@ cur.execute(sql)
 conn.commit()
 post_id = cur.fetchone()[0]
 
-print post_id
-
+'''
 
 sql ="""insert INTO categorias_posts (categoria_id,post_id)
 (SELECT id,%i  FROM categorias where nombre = 'Cine' or 
@@ -48,12 +47,8 @@ sql ="""insert INTO categorias_posts (categoria_id,post_id)
 
 cur.execute(sql)
 
+'''
 
-sql ="""insert INTO usuarios (nombre,apellido,email,passwd,creado)
- values ('Manuel','Alba','malba@mmae.cl','1234',now() );
-"""
-
-cur.execute(sql)
 
 
 
