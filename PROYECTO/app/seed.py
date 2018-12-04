@@ -4,7 +4,7 @@ conn = psycopg2.connect("dbname=%s user=%s password=%s"%(database,user,passwd))
 cur = conn.cursor()
 
 sql ="""
-insert into choques (id_evento, ciudad,calle, numeracion, fecha, hora) values
+insert into choques (ID_EVENTO, ciudad, calle, numeracion, fecha, hora)  values
 (0,'Gran Puerto Montt','San Ignacio','1930','1978-08-20','21:13:37'),
 (1,'Gran Rancagua','Av.Republica de Chile','1035','1990-11-20','18:29:32'),
 (2,'Osorno','Alcalde Rene Soriano Borquez','2713','1999-04-11','04:03:06'),

@@ -7,79 +7,115 @@ cur = conn.cursor()
 
 
 
-sql ="""DROP SCHEMA public CASCADE;
-CREATE SCHEMA public;""" #Esta linea eliminará todas las tablas creadas en la base de datos
-
-cur.execute(sql) #ejecutar la accion anterior
-
-sql ="""
-CREATE TABLE autos
-           (id_auto serial PRIMARY KEY, largo varchar(40), ancho varchar, alto varchar, peso_neto varchar,
- peso_maximo varchar , tipo_combustible varchar, tipo_auto varchar, maximo_pasajeros varchar,
- num_aro varchar, texto text, creado timestamp);
-"""
+sql ="""DROP SCHEMA public CASCADE; CREATE SCHEMA public;"""
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE mediciones
-           ( id_sensor, id_auto, fecha, hora serial PRIMARY KEY, magnitud varchar(40), creado timestamp);
+CREATE TABLE CLIENTES
+           (RUT integer PRIMARY KEY,
+           digito varchar(1),
+           nombre varchar(40),
+           apellido varchar(40),
+           email varchar(100),
+           telefono varchar(10), 
+           creado timestamp);
 """
-
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE sensores
-           (id_sensor serial PRIMARY KEY, nombre varchar(40), presicion integer, creado timestamp);
+CREATE TABLE AUTOS
+           (PATENTE varchar(6) PRIMARY KEY,
+            rut integer references clientes(rut),
+            largo integer, 
+            ancho integer, 
+            alto integer, 
+            peso_neto integer,
+            tipo_combustible varchar, 
+            tipo_auto varchar, 
+            maximo_pasajeros integer,
+            num_aro varchar, 
+            creado timestamp);
+"""
+cur.execute(sql)
+
+
+sql ="""
+CREATE TABLE SENSORES
+           (id_sensor varchar(10) PRIMARY KEY, 
+           nombre varchar(40), 
+           presicion integer, 
+           tipo_unidad varchar(10),
+           creado timestamp);
 """
 
+cur.execute(sql)
+
+
+
+sql ="""
+CREATE TABLE MEDICIONES
+           (id_sensor varchar(10) references SENSORES(id_sensor),
+            patente varchar(6) references AUTOS(PATENTE),
+            hora int,
+            fecha int,
+            valor int,
+            creado timestamp);
+"""
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE clientes
-           (id_usuario serial PRIMARY KEY, nombre varchar(40),apellido varchar(40),
-           email varchar(100),passwd varchar(255),celular intiger, foto png, creado timestamp);
+CREATE TABLE CHOQUES
+            (ID_EVENTO int PRIMARY KEY,
+            fecha int,
+            hora int,
+            ciudad varchar(60),
+            calle varchar(60),
+            numeracion varchar(10),
+            creado timestamp);
 """
-
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE penalizaciones
-           (id_penalizacion serial PRIMARY KEY), monto integer, comentario integer, fecha_incidente date,
-fecha_pago date, creado timestamp;
-"""
-
-cur.execute(sql)
-
-sql = """
-CREATE TABLE involucrados
-           (id_auto, id_choque, fecha ,hora serial PRIMERARY KEY), numero_de_afectados, creado timestap
-
-"""
-
-cur.execute(sql)
-
-sql= """
-CREATE TABLE debe
-           (id_usuario, id_penalizacion serial PRIMARY KEY), comentario varchar(140),creado timestap
-
-"""
-
-cur.execute(sql)
-
-sql = """
-CREATE TABLE choques
-           (id_evento serial PRIMARY KEY), ciudad varchar(40), calle varchar, numeracion intiger, creado timestap
-
+CREATE TABLE INVOLUCRADOS
+            (ID_EVENTO int references CHOQUES(ID_EVENTO),
+            PATENTE varchar(6) references AUTOS(PATENTE),
+            pasajeros_afectados int,
+            creado timestamp);
 """
 cur.execute(sql)
 
-sql = """
+sql ="""
 CREATE TABLE GPS
-           (id_auto, fecha, hora serial PRIMARY KEY), latitud varchar(40), longitud varchar, creado timestap
-
+            (PATENTE varchar(6) references AUTOS(PATENTE),
+            fecha int,
+            hora int,
+            longitud int,
+            latitud int,
+            creado timestamp);
 """
 cur.execute(sql)
+
+sql ="""
+CREATE TABLE FALTAS
+            (id_penalizacion integer PRIMARY KEY,
+            monto int,
+            comentario varchar(100),
+            fecha_incidente int,
+            fecha_vencimiento int,
+            creado timestamp);
+"""
+cur.execute(sql)
+
+sql ="""
+CREATE TABLE DEBE
+            (RUT integer references CLIENTES(RUT),
+            id_penalizacion integer references FALTAS(id_penalizacion),
+            creado timestamp);
+"""
+cur.execute(sql)
+
+
 
 conn.commit()
 cur.close()
