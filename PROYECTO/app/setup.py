@@ -80,7 +80,7 @@ sql ="""
 CREATE TABLE INVOLUCRADOS
             (ID_EVENTO int references CHOQUES(ID_EVENTO),
             PATENTE varchar(6) references AUTOS(PATENTE),
-            pasajeros_afectados int,
+            numero_afectados int,
             creado timestamp);
 """
 cur.execute(sql)

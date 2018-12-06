@@ -13,7 +13,7 @@ print("insert into clientes (id_usuario, digito, nombre, apellido, email, telefo
 
 for x in range(0,10):
     y = fake.name()
-    print("({},'{}','{}','{}','{}','{}','{}'),".format(x,choice(list3),y.split()[0],y.split()[1],fake.address(), fake.email(),fake.phone_number()))
+    print("({},'{}','{}','{}','{}','{}','{}'),".format(x,choice(list3),y.split()[0],y.split()[1], fake.email(),fake.phone_number(),fake.address()))
 print(")")
 
 
