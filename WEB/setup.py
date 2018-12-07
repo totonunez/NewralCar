@@ -88,15 +88,15 @@ sql ="""
 CREATE TABLE FALTAS
             (id_penalizacion integer PRIMARY KEY,
             monto int,
-            comentario varchar(300),
-            fecha_incidente varchar(20),
-            fecha_vencimiento varchar(20));
+            comentario varchar(300));
 """
 cur.execute(sql)
 
 sql ="""
 CREATE TABLE DEBE
             (RUT integer references CLIENTES(RUT),
+            fecha_incidente varchar(20),
+            fecha_vencimiento varchar(20),
             id_penalizacion integer references FALTAS(id_penalizacion));
 """
 cur.execute(sql)
