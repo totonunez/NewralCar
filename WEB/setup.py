@@ -58,7 +58,9 @@ CREATE TABLE MEDICIONES
             PATENTE varchar(6) references AUTOS(PATENTE),
             hora varchar(10),
             fecha varchar(20),
-            valor int);
+            valor int,
+            longitud int,
+            latitud int);
 """
 cur.execute(sql)
 
@@ -81,15 +83,6 @@ CREATE TABLE INVOLUCRADOS
 """
 cur.execute(sql)
 
-sql ="""
-CREATE TABLE GPS
-            (PATENTE varchar(6) references AUTOS(PATENTE),
-            fecha varchar(20),
-            hora varchar(10),
-            longitud int,
-            latitud int);
-"""
-cur.execute(sql)
 
 sql ="""
 CREATE TABLE FALTAS
