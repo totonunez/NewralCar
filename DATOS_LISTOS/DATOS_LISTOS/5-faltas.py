@@ -11,17 +11,11 @@ cur = conn.cursor()
 fake = Faker()
 
 for x in range(0,10):
-    fechaIncidente = fake.date()
-    fechaPago = fake.date()
-    while fechaIncidente > fechaPago:
-        fechaPago = fake.date()
-
-    sql="""insert into faltas (id_penalizacion,monto,comentario,fecha_incidente,fecha_vencimiento) values"""
-    sql = sql + ("({},{},'{}','{}','{}')".format(x,
-    randint(40000,300000),
-    fake.text(),
-    fechaIncidente,
-    fechaPago))
+    plata = randint(40000,300000) 
+    sql="""insert into faltas (id_penalizacion,monto,comentario) values"""
+    sql = sql + ("({},{},'{}')".format(x,
+    (plata - plata%1000),
+    fake.text()))
     cur.execute(sql)
 
 conn.commit()
