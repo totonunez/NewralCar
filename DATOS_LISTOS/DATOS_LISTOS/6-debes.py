@@ -19,9 +19,19 @@ posts2  = cur.fetchall()
 
 
 for x in posts:
-    for y in  posts2:
-        sql= ("""insert into debe (id_usuario,id_penalizacion) values""")
-        sql = sql + ("({},{});".format(x[0],y[0]))
+    faltasdebidas = []
+    for y in range (0,randint(0,randint(0,10))):
+        faltita = choice(posts2)[0]
+        while faltita in faltasdebidas:
+            faltita = choice(posts2)[0]
+        faltasdebidas.append(faltita)
+        
+        fechaIncidente = fake.date()
+        fechaPago = fake.date()
+        while fechaIncidente > fechaPago:
+            fechaPago = fake.date()
+        sql= ("""insert into debe values""")
+        sql = sql + ("({},{},'{}','{}');".format(x[0],faltita,fechaIncidente,fechaPago))
         cur.execute(sql)
 
 
