@@ -12,7 +12,7 @@ seq=["Sensor De Presion Cilindros",
 "Sensor Presion Aire",
 "Sensor Voltaje Bateria",
 "Sensor Velocidad",
-"Sensor De Aceleracion"]
+"Sensor De Aceleracion","GPS longitud", "GPS latitud"]
 
 presicion=['0.9','0.92','0.93', '1.00']
 seq2=['atms',
@@ -22,7 +22,8 @@ seq2=['atms',
 "atms",
 "volt",
 "ms",
-"ms2"]
+"ms2","lon","lat"]
+
 x=1
 for i in seq:
     sql="""insert into sensores (id_sensor, nombre,presicion,tipo_unidad) values"""
