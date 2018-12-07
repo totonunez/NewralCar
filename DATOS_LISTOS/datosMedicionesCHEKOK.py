@@ -17,10 +17,17 @@ c=1
 for t in posts2:
     fecha=43438
     for x in range(10):
-        hour=choice(('12:','13:','15:','16:'))    
+        hour=choice(('12:','13:','15:','16:'))
+        iniciolongitud=choice(('-33.490855','-33.428637','-33.530855','-33.402637','-33.012855','-33.357637','-33.951855','-33.301637'))
+        iniciolatitud=choice(('-70.599644','-70.539405','-70.889644','-70.359405','-70.229644','-70.969405','-70.759644','-70.546405'))
+        c=1
         for w in range(20,60):
             last=hour
             hour+=str(w)
+            
+            lon=str(("{0:.5f}".format(iniciolongitud-c*0.000001))
+            lat=str(("{0:.5f}".format(iniciolatitud-c*0.00001)))
+            c+=1
             for y in posts:
                 if y[0] == 1:
                     data=randrange(80,160,5)
@@ -43,11 +50,11 @@ for t in posts2:
                 if y[0] == 10:
                     data=randrange(60, 150, 10)
                 sql="""insert INTO mediciones VALUES"""
-                sql=sql+("('{}','{}','{}','{}','{}');".format(y[0],
+                sql=sql+("('{}','{}','{}','{}','{}','{}','{}');".format(y[0],
                 t[0],
                 hour,
                 fecha,
-                data))
+                data,lon,lat)                                          
                 cur.execute(sql)
                 c+=1
             hour=last
