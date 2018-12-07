@@ -20,8 +20,12 @@ posts2  = cur.fetchall()
 
 for x in posts:
     for y in  posts2:
+        fechaIncidente = fake.date()
+        fechaPago = fake.date()
+        while fechaIncidente > fechaPago:
+            fechaPago = fake.date()
         sql= ("""insert into debe (id_usuario,id_penalizacion) values""")
-        sql = sql + ("({},{});".format(x[0],y[0]))
+        sql = sql + ("({},{},'{}','{}');".format(x[0],y[0],fechaIncidente,fechaPago))
         cur.execute(sql)
 
 
