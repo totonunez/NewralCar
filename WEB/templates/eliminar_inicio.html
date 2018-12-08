@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>ELIMINAR DATOS</h2>
+<br>
+<p>SELECCIONE LA OPCION DE ELIMINAR</p>
+<p style="color:#ff0000;"></p>
+<br>
+<form action="/ELIMINAR_CLIENTE">
+  <input type="submit" value="ELIMINAR CLIENTE">
+</form>
+<br>
+<form action="/ELIMINAR_AUTO">
+  <input type="submit" value="ELIMINAR">
+</form>
+<br>
+<form action="/ELIMINAR_DEBE">
+  <input type="submit" value="ELIMINAR MULTA">
+</form>
+<br>
+<form action="/">
+  <input type="submit" value="VOLVER">
+</form>
+{% endblock %}
