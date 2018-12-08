@@ -1,8 +1,7 @@
 from faker import Faker
+from time import time 
 from random import choice, random, randint
 import csv
-from configuraciones import *
-import psycopg2
 
 
 
@@ -103,26 +102,18 @@ calles['San Felipe'] = sanfelipe
 
 
 
-conn = psycopg2.connect("dbname=%s user=%s password=%s"%(database,user,passwd))
-cur = conn.cursor()
-
-
 fake = Faker()
+tiempo = time()
+print("CHOQUES")
+print("insert into choques (id_evento, ciudad,calle, numeracion, fecha, hora) values")
 
 for x in range(0,10):
     ciudad = choice(results)
-    fecha = fake.date()
-    hora = fake.time() 
-    sql = ("""insert into choques (ID_EVENTO,fecha,hora,ciudad,calle,numeracion) values""")
-    sql = sql + ("({},'{}','{}','{}','{}','{}');".format(x,
-    fecha,
-    hora,
-    ciudad,
-    choice(calles[ciudad]),
-    str(randint(0,9999))))
+    print("({},'{}','{}','{}','{}','{}'),".format(x,ciudad,choice(calles[ciudad]), randint(20,3000),fake.date(),fake.time() ))
 
-    cur.execute(sql)
+print(")")
 
-conn.commit()
-cur.close()
-conn.close()
+final = time()- tiempo
+print("Tiempo total en crearse todos los datos es ", final)
+
+
