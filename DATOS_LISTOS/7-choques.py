@@ -115,10 +115,15 @@ fake = Faker()
 for x in range(0,10):
     ciudad = choice(results)
     fecha = fake.date()
+    dia = fecha[8:10]
+    mes = fecha[5:7]
+    ano = fecha[0:4]
     hora = fake.time() 
-    sql = ("""insert into choques (ID_EVENTO,fecha,hora,ciudad,calle,numeracion) values""")
-    sql = sql + ("({},'{}','{}','{}','{}','{}');".format(x,
-    fecha,
+    sql = ("""insert into choques values""")
+    sql = sql + ("({},'{}','{}','{}','{}','{}','{}','{}');".format(x,
+    dia,
+    mes,
+    ano,
     hora,
     ciudad,
     choice(calles[ciudad]),

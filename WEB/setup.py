@@ -67,7 +67,9 @@ cur.execute(sql)
 sql ="""
 CREATE TABLE CHOQUES
             (ID_EVENTO int PRIMARY KEY,
-            fecha varchar(20),
+            ano varchar(5),
+            mes varchar(3),
+            dia varchar(3),
             hora varchar(10),
             ciudad varchar(60),
             calle varchar(60),
