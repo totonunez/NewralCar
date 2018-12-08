@@ -6,13 +6,16 @@ import psycopg2
 
 
 
-results = []
 
-with open('ListaDeDatos.csv') as CITY:
-    reader = csv.DictReader(CITY)
-    for row in reader:
-        results.append(row['Ciudades'])
-    
+results = ["Gran Santiago","Gran Concepcion","Gran Valparaiso",
+"Gran La Serena","Antofagasta","Gran Temuco",
+"Gran Rancagua","Gran Iquique","Talca",
+"Arica","Gran Puerto Montt","Gran Chillan","Los Angeles",
+"Calama","Calama","Copiapo","Osorno","Gran Quillota",
+"Valdivia","Punta Arenas","Gran San Antonio",
+"Curico","Ovalle","Linares","Los Andes",
+"Melipilla","San Felipe"]
+
 
 santiago = []
 concepcion = []
