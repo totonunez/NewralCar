@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>ELIMINAR CLIENTE</h2>
+  <br>
+  <p>INGRESE UN RUT QUE DESEA ELIMINAR </p>
+  <p style="color:#ff0000;">PRECAUCION: AL ELIMINAR UN CLIENTE, SE ELIMNA TODA DEPENDENCIA DE ESTE CLIENTE EN EL SISTEMA.</p>
+  <br>
+  <form action="/ELIMINAR_CLIENTE">
+  RUT:<br>
+  <input type="text" name="RUT" value="RUT">
+  <br>
+  <br>
+  <input type="submit" value="BORRAR">
+</form> 
+
+{% endblock %}
