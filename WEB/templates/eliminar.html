@@ -1,17 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>ELIMINAR AUTO</h2>
-<br>
-<p>INGRESE UNA PATENTE QUE DESEA ELIMINAR </p>
-<p style="color:#ff0000;">PRECAUCION: ELIMINAR UN AUTO , BORRA TODO REGISTRO DEL AUTO</p>
-<br>
-<form action="/ELIMINAR_AUTO">
-  PATENTE:<br>
-  <input type="text" name="PATENTE" value="PATENTE">
-  <br>
-  <br>
-  <input type="submit" value="BORRAR">
-</form> 
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">ELIMINAR AUTO</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    INGRESE UNA PATENTE QUE DESEA ELIMINAR 
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p style="color:#ff0000;">PRECAUCION: ELIMINAR UN AUTO , BORRA TODO REGISTRO DEL AUTO</p>
+                              <br>
+                              <form action="/ELIMINAR_AUTO">
+                              PATENTE:<br>
+                              <input type="text" name="PATENTE">
+                                  <br>
+                                  <br>
+                              <input type="submit" value="BORRAR">
+                              </form> 
 
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                     
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
 
 {% endblock %}
