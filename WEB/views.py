@@ -119,15 +119,52 @@ def comentario(id):
 
 
 @app.route('/borrar/<id>', methods=['GET', 'POST'])
-def borrar(id):
+def borrarCliente(rut):
 
 
 	sql ="""
-		delete from comentarios where id = %s
-	"""%(id)
-	print sql
+		select patente from autos where rut = %s
+	"""%(rut)
+	cur.execute(sql)
+	patentes = cur.fetchall()
+
+	for x in patente:
+		sql ="""
+		delete from involucrados where patente = %s
+		"""%(x)
+		cur.execute(sql)
+
+	for x in patente:
+		sql ="""
+		delete from mediciones where patente = %s
+		"""%(x)
+		cur.execute(sql)
+
+	sql ="""
+		delete from debe where rut = %s
+		"""%(rut)
+	cur.execute(sql)
+
+	sql ="""
+		delete from autos where rut = %s
+		"""%(rut)
+	cur.execute(sql)
+
+	sql ="""
+		delete from clientes where rut = %s
+		"""%(rut)
+	cur.execute(sql)
+
+	
+	
+
+	
+
+
+
 	cur.execute(sql)
 	conn.commit()
+	
 	return  redirect(request.referrer)
 
 
