@@ -1,5 +1,6 @@
 from faker import Faker
 from time import time
+from random import randint, choice
 from configuraciones import *
 import psycopg2
 conn = psycopg2.connect("dbname=%s user=%s password=%s"%(database,user,passwd))
