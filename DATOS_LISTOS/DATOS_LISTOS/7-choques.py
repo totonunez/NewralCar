@@ -8,8 +8,8 @@ import psycopg2
 
 results = []
 
-with open('ListaDeDatos.csv') as File:
-    reader = csv.DictReader(File)
+with open('ListaDeDatos.csv') as CITY:
+    reader = csv.DictReader(CITY)
     for row in reader:
         results.append(row['Ciudades'])
     
