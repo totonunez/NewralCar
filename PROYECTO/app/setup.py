@@ -18,8 +18,7 @@ CREATE TABLE CLIENTES
            nombre varchar(40),
            apellido varchar(40),
            email varchar(100),
-           telefono varchar(10), 
-           creado timestamp);
+           telefono varchar(10));
 """
 cur.execute(sql)
 
@@ -34,8 +33,7 @@ CREATE TABLE AUTOS
             tipo_combustible varchar, 
             tipo_auto varchar, 
             maximo_pasajeros integer,
-            num_aro varchar, 
-            creado timestamp);
+            num_aro varchar);
 """
 cur.execute(sql)
 
@@ -45,8 +43,7 @@ CREATE TABLE SENSORES
            (id_sensor varchar(10) PRIMARY KEY, 
            nombre varchar(40), 
            presicion integer, 
-           tipo_unidad varchar(10),
-           creado timestamp);
+           tipo_unidad varchar(10));
 """
 
 cur.execute(sql)
@@ -59,8 +56,7 @@ CREATE TABLE MEDICIONES
             patente varchar(6) references AUTOS(PATENTE),
             hora int,
             fecha int,
-            valor int,
-            creado timestamp);
+            valor int);
 """
 cur.execute(sql)
 
@@ -71,8 +67,7 @@ CREATE TABLE CHOQUES
             hora int,
             ciudad varchar(60),
             calle varchar(60),
-            numeracion varchar(10),
-            creado timestamp);
+            numeracion varchar(10));
 """
 cur.execute(sql)
 
@@ -80,8 +75,7 @@ sql ="""
 CREATE TABLE INVOLUCRADOS
             (ID_EVENTO int references CHOQUES(ID_EVENTO),
             PATENTE varchar(6) references AUTOS(PATENTE),
-            numero_afectados int,
-            creado timestamp);
+            numero_afectados int);
 """
 cur.execute(sql)
 
@@ -91,8 +85,7 @@ CREATE TABLE GPS
             fecha int,
             hora int,
             longitud int,
-            latitud int,
-            creado timestamp);
+            latitud int);
 """
 cur.execute(sql)
 
@@ -102,16 +95,14 @@ CREATE TABLE FALTAS
             monto int,
             comentario varchar(100),
             fecha_incidente int,
-            fecha_vencimiento int,
-            creado timestamp);
+            fecha_vencimiento int);
 """
 cur.execute(sql)
 
 sql ="""
 CREATE TABLE DEBE
             (RUT integer references CLIENTES(RUT),
-            id_penalizacion integer references FALTAS(id_penalizacion),
-            creado timestamp);
+            id_penalizacion integer references FALTAS(id_penalizacion));
 """
 cur.execute(sql)
 
