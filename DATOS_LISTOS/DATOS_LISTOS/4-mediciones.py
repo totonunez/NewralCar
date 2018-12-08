@@ -26,7 +26,7 @@ for t in posts2:
             hour+=str(w)
             
             lon=str(("{0:.5f}".format(iniciolongitud-c*0.000001))
-            lat=str(("{0:.5f}".format(iniciolatitud-c*0.00001)))
+            lat=str(("{0:.5f}".format(iniciolatitud-c*0.00001))
             c+=1
             for y in posts:
                 if y[0] == 1:
