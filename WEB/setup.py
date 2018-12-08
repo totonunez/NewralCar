@@ -59,8 +59,8 @@ CREATE TABLE MEDICIONES
             hora varchar(10),
             fecha varchar(20),
             valor int,
-            longitud int,
-            latitud int);
+            longitud varchar(20),
+            latitud varchar(20));
 """
 cur.execute(sql)
 
