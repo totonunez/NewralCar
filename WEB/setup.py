@@ -95,7 +95,7 @@ cur.execute(sql)
 sql ="""
 CREATE TABLE DEBE
             (RUT integer references CLIENTES(RUT),
-            id_penalizacion integer references FALTAS(id_penalizacion)
+            id_penalizacion integer references FALTAS(id_penalizacion),
             fecha_incidente varchar(20),
             fecha_vencimiento varchar(20));
 """
