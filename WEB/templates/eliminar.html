@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>ELIMINAR AUTO</h2>
+<br>
+<p>INGRESE UNA PATENTE QUE DESEA ELIMINAR </p>
+<p style="color:#ff0000;">PRECAUCION: ELIMINAR UN AUTO , BORRA TODO REGISTRO DEL AUTO</p>
+<br>
+<form action="/ELIMINAR_AUTO">
+  PATENTE:<br>
+  <input type="text" name="PATENTE" value="PATENTE">
+  <br>
+  <br>
+  <input type="submit" value="BORRAR">
+</form> 
+
+
+{% endblock %}
