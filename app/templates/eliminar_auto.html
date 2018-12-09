@@ -1,10 +1,11 @@
+
+
 {% extends "base.html" %}
 {% block content %}
-
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">ELIMINAR CLIENTE</h1>
+            <h1 class="page-header">ELIMINAR AUTO</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,21 +14,21 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    INGRESE UN RUT QUE DESEA ELIMINAR 
+                    INGRESE UNA PATENTE QUE DESEA ELIMINAR 
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <p style="color:#ff0000;">PRECAUCION: AL ELIMINAR UN CLIENTE, SE ELIMNA TODA DEPENDENCIA DE ESTE CLIENTE EN EL SISTEMA.</p>
-                            <br>
-                            <form action="/ELIMINAR_CLIENTE", method="post">
-                            RUT:<br>
-                            <input type="text" name="RUT">
-                            <br>
-                            <br>
-                            <input type="submit" value="BORRAR">
-                          </form> 
-                          
+                            <p style="color:#ff0000;">PRECAUCION: ELIMINAR UN AUTO , BORRA TODO REGISTRO DEL AUTO</p>
+                              <br>
+                              <form action="/ELIMINAR_AUTO", method="post">
+                              PATENTE:<br>
+                              <input type="text" name="PATENTE">
+                                  <br>
+                                  <br>
+                              <input type="submit" value="BORRAR">
+                              </form> 
+
                         </div>
                         <!-- /.col-lg-6 (nested) -->
                      

@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% block content %}
 <div id="page-wrapper">
@@ -19,7 +20,7 @@
                         <div class="col-lg-6">
                             <p style="color:#ff0000;">PRECAUCION: ELIMINAR UN AUTO , BORRA TODO REGISTRO DEL AUTO</p>
                               <br>
-                              <form action="/ELIMINAR_AUTO">
+                              <form action="/ELIMINAR_AUTO", method="post">
                               PATENTE:<br>
                               <input type="text" name="PATENTE">
                                   <br>
