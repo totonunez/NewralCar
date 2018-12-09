@@ -130,6 +130,7 @@ def crear():
 	return render_template('crear_inicio.html')
 
 @app.route('/CREAR_SENSOR',methods=['GET','POST'])
+<<<<<<< HEAD
 def crearsensor():
 	if request.method == 'POST':
 		idsensor = resquest.form['ID_SENSOR']
@@ -147,14 +148,14 @@ def crearsensor():
 		return render_template("actualizar_dueno.html",nombre="nombre")	
 
 @app.route('/(CREAR_AUTO',methods=['GET','POST'])
+=======
+>>>>>>> 14173e0be69ac8088cfb2818a8f820839e2ad6ea
 def crearsensor():
 	if request.method == 'POST':
 		idsensor = resquest.form['ID_SENSOR']
-		nombresensor = request.form['NOMBRE']
-		presicion = request.form['PRESICION']
-		unidad = request.form['TIPO_UNIDAD']
+		fecha = request.form['FECHA_VENC']
 		try:
-			sql= """insert into sensores values(%s, %s, %s, %s) """%(idsensor, nombresensor, presicion, unidad)
+			sql= """update set auto.fecha_vencimiento = %s, from autos where autos.patente = %s """%(fecha,rutdebe)
 			cur.excecute(sql)
 			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
@@ -163,6 +164,7 @@ def crearsensor():
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")	
 
+	
 
 
 
@@ -182,5 +184,3 @@ def formularios():
 @app.route('/tablas')
 def tablas():
 	return render_template("tables.html",nombre="nombre")
-
-
