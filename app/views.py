@@ -72,7 +72,7 @@ def borrardebe():
 		except:
 			return render_template("eliminar_error.html",nombre="nombre")
 	else:
-		return render_template("eliminar_debe.html",nombre="nombre")			
+		return render_template("eliminar_debe.html",nombre="nombre")
 
 
 @app.route('/ACTUALIZAR', methods=['GET','POST'])
@@ -92,7 +92,7 @@ def actualizardueno():
 		except:
 			return render_template("eliminar_error.html",nombre="nombre")
 	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")		
+		return render_template("actualizar_dueno.html",nombre="nombre")
 
 
 @app.route('/ACTUALIZAR_FECHADEBE',methods=['GET','POST'])
@@ -130,7 +130,6 @@ def crear():
 	return render_template('crear_inicio.html')
 
 @app.route('/CREAR_SENSOR',methods=['GET','POST'])
-<<<<<<< HEAD
 def crearsensor():
 	if request.method == 'POST':
 		idsensor = resquest.form['ID_SENSOR']
@@ -145,26 +144,7 @@ def crearsensor():
 		except:
 			return render_template("eliminar_error.html",nombre="nombre")
 	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")	
-
-@app.route('/(CREAR_AUTO',methods=['GET','POST'])
-=======
->>>>>>> 14173e0be69ac8088cfb2818a8f820839e2ad6ea
-def crearsensor():
-	if request.method == 'POST':
-		idsensor = resquest.form['ID_SENSOR']
-		fecha = request.form['FECHA_VENC']
-		try:
-			sql= """update set auto.fecha_vencimiento = %s, from autos where autos.patente = %s """%(fecha,rutdebe)
-			cur.excecute(sql)
-			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
-		except:
-			return render_template("eliminar_error.html",nombre="nombre")
-	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")	
-
-	
+		return render_template("actualizar_dueno.html",nombre="nombre")
 
 
 
