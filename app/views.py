@@ -24,7 +24,7 @@ def borrarauto():
 		try:
 			sql= """ delete from mediciones where mediciones.patente= %s"""%(patente)
 			cur.execute(sql)
-			sql= """ delete from autos where mediciones.patente = %s""" %(patente)
+			sql= """ delete from autos where autos.patente = %s""" %(patente)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
@@ -38,7 +38,7 @@ def borrarauto():
 @app.route('/ELIMINAR_CLIENTE',methods=['GET', 'POST'])
 def borrarcliente():
 	if request.method == 'POST':
-		rutcliente = request.form['RUT']
+		rutcliente = request.form['RUT	']
 		try:
 			sql= """ delete from clientes where clientes.rut = %s"""%(rutcliente)
 			cur.execute(sql)
@@ -71,7 +71,7 @@ def borrardebe():
 def actualizar():
 	return render_template('actualizar_inicio.html')
 
-@app.route(/'ACTUALIZAR_DUENO',methods=['GET','POST'])
+@app.route('/ACTUALIZAR_DUENO', methods=['GET','POST'])
 def actualizardueno():
 	if request.method == 'POST':
 		rutdueno = resquest.form['RUT']
@@ -87,7 +87,7 @@ def actualizardueno():
 		return render_template("actualizar_dueno.html",nombre="nombre")		
 
 
-@app.route(/'ACTUALIZAR_FECHADEBE',methods=['GET','POST'])
+@app.route('/ACTUALIZAR_FECHADEBE',methods=['GET','POST'])
 def actualizardebe():
 	if request.method == 'POST':
 		rutdebe = resquest.form['RUT']
@@ -102,7 +102,7 @@ def actualizardebe():
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")	
 
-@app.route(/'ACTUALIZAR_TELEFONO',methods=['GET','POST'])
+@app.route('/ACTUALIZAR_TELEFONO',methods=['GET','POST'])
 def actualizartelefono():
 	if request.method == 'POST':
 		ruttel = resquest.form['RUT']
@@ -117,17 +117,19 @@ def actualizartelefono():
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")	
 
-@app.route(/'CREAR',methods=['GET','POST'])
+@app.route('/(CREAR',methods=['GET','POST'])
 def crear():
 	return render_template('crear_inicio.html')
 
-@app.route(/'CREAR_SENSOR',methods=['GET','POST'])
+@app.route('/(CREAR_SENSOR',methods=['GET','POST'])
 def crearsensor():
 	if request.method == 'POST':
 		idsensor = resquest.form['ID_SENSOR']
-		fecha = request.form['FECHA_VENC']
+		nombresensor = request.form['NOMBRE']
+		presicion = request.form['PRESICION']
+		unidad = request.form['TIPO_UNIDAD']
 		try:
-			sql= """update set auto.fecha_vencimiento = %s, from autos where autos.patente = %s """%(fecha,rutdebe)
+			sql= """insert into sensores values(%s, %s, %s, %s) """%(idsensor, nombresensor, presicion, unidad)
 			cur.excecute(sql)
 			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
@@ -136,7 +138,23 @@ def crearsensor():
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")	
 
-	
+@app.route('/(CREAR_AUTO',methods=['GET','POST'])
+def crearsensor():
+	if request.method == 'POST':
+		idsensor = resquest.form['ID_SENSOR']
+		nombresensor = request.form['NOMBRE']
+		presicion = request.form['PRESICION']
+		unidad = request.form['TIPO_UNIDAD']
+		try:
+			sql= """insert into sensores values(%s, %s, %s, %s) """%(idsensor, nombresensor, presicion, unidad)
+			cur.excecute(sql)
+			conn.commit()
+			return render_template("eliminacion_ok.html",nombre="nombre")
+		except:
+			return render_template("eliminar_error.html",nombre="nombre")
+	else:
+		return render_template("actualizar_dueno.html",nombre="nombre")	
+
 
 
 
