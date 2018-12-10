@@ -269,7 +269,7 @@ def formularios():
 		cur.execute(sql)
 		conn.commit()
 
-	return render_template("forms.html",nombre="nombre")
+	return render_template("formulario_auto.html",nombre="nombre")
 
 
 @app.route('/tablas')
