@@ -128,20 +128,17 @@ def actualizardebe():
 		ruta = request.form['RUT']
 		fecha = request.form['FECHA_NUEVA']
 		id = request.form['IDMULTA']
-		sql= """select * from debe where debe.rut='%s' and id_penalizacion=%s for update;"""%(ruta, id)
+		sql= """select * from debe where debe.rut='%s' and debe.id_penalizacion=%s for update;"""%(ruta, id)
 		sql2="""update debe set fecha_vencimiento='%s' where debe.rut='%s' and debe.id_penalizacion=%s;"""%(fecha,ruta, id)
 		print sql, ' ' ,sql2
 		try:
 			print 'intentado subir'
-			
-			
-			cur.execute(sql)
-			conn.commit()
+			print cur.execute(sql)
 			data= cur.fetchall()
 			print data
-			
-			cur.execute(sql2)
-			data= cur.fetchall()
+			conn.commit()
+			print cur.execute(sql2)
+			data = cur.fetchall()
 			print data
 			conn.commit()
 			return render_template("actualizar_exito.html",nombre="nombre")
