@@ -5,80 +5,82 @@
 
       <div class="row">
 
+
           <!-- Blog Entries Column -->
           <div class="col-md-8">
 
-              <h1 class="page-header">
-                 NewRalCar 
-                  <small>Proyecto Base de Datos </small>
-              </h1>
 
-              <!-- First Blog Post -->
-              {% for post in faltas %}
+            <h1 class="page-header">
+              
+               NewRalCar 
+                <small>Proyecto Base de Datos </small>
+            </h1>
+            <!-- First Blog Post -->
+            {% for post in faltas %}
+            <h2>
+                <a href="/post/{{post[0]}}">{{post[1]}}</a>
+            </h2>
+            <p class="lead">
+                by <a href="index.php">Manuel Alba</a>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+            <hr>
+            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+            <hr>
+            <p>{{post[2]}}</p>
+            <a class="btn btn-primary" href="/post/{{post[0]}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <hr>
+            {% endfor %}
 
-              <h2>
-                  <a href="/post/{{post[0]}}">{{post[1]}}</a>
-              </h2>
-              <p class="lead">
-                  by <a href="index.php">Manuel Alba</a>
-              </p>
-              <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-              <hr>
-              <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-              <hr>
-              <p>{{post[2]}}</p>
-              <a class="btn btn-primary" href="/post/{{post[0]}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-              <hr>
-              {% endfor %}
+            <div class="w3-row-padding w3-margin-bottom">
+                <div class="w3-quarter">
+                  <div class="w3-container w3-red w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                    <div>
+                      <h3>52</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Messages</h4>
+                  </div>
+                </div>
+                <div class="w3-quarter">
+                  <div class="w3-container w3-blue w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                      <h3>99</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Views</h4>
+                  </div>
+                </div>
+                <div class="w3-quarter">
+                  <div class="w3-container w3-teal w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                      <h3>23</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Shares</h4>
+                  </div>
+                </div>
+                <div class="w3-quarter">
+                  <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                      <h3>50</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Users</h4>
+                  </div>
+                </div>
+              </div>
             
             
 
 
           </div>
 
-          <div class="w3-row-padding w3-margin-bottom">
-              <div class="w3-quarter">
-                <div class="w3-container w3-red w3-padding-16">
-                  <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-                  <div>
-                    <h3>52</h3>
-                  </div>
-                  <div class="w3-clear"></div>
-                  <h4>Messages</h4>
-                </div>
-              </div>
-              <div class="w3-quarter">
-                <div class="w3-container w3-blue w3-padding-16">
-                  <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
-                  <div class="w3-right">
-                    <h3>99</h3>
-                  </div>
-                  <div class="w3-clear"></div>
-                  <h4>Views</h4>
-                </div>
-              </div>
-              <div class="w3-quarter">
-                <div class="w3-container w3-teal w3-padding-16">
-                  <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-                  <div class="w3-right">
-                    <h3>23</h3>
-                  </div>
-                  <div class="w3-clear"></div>
-                  <h4>Shares</h4>
-                </div>
-              </div>
-              <div class="w3-quarter">
-                <div class="w3-container w3-orange w3-text-white w3-padding-16">
-                  <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-                  <div class="w3-right">
-                    <h3>50</h3>
-                  </div>
-                  <div class="w3-clear"></div>
-                  <h4>Users</h4>
-                </div>
-              </div>
-            </div>
+          
 
           <!-- Blog Sidebar Widgets Column -->
         <div class="col-md-4">
