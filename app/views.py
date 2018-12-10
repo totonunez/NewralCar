@@ -109,6 +109,8 @@ def actualizardueno():
 				try:
 					sql="""update autos set rut='%s' where autos.patente = '%s';"""%(rutdueno, patente2)
 					cur.execute(sql)
+					data=cur.fetchall()
+					print data
 					return render_template("actualizar_exito.html",nombre="nombre")
 				except:		
 					return render_template("error_actualizar_dueno.html",nombre="nombre")
@@ -127,8 +129,12 @@ def actualizardebe():
 		try:
 			sql= """select * from debe where debe.rut='%s' and id_penalizacion=%s for update;"""%(ruta, id)
 			cur.execute(sql)
+			data= cur.fetchall()
+			print data
 			sql="""update debe set fecha_vencimiento='%s' where debe.rut='%s' and debe.id_penalizacion=%s;"""%(fecha,ruta, id)
 			cur.execute(sql)
+			data= cur.fetchall()
+			print data
 			conn.commit()
 			return render_template("actualizar_exito.html",nombre="nombre")
 		except:
@@ -144,7 +150,12 @@ def actualizartelefono():
 		try:
 			sql= """select * from clientes where cliente.rut = '%s' for update;"""%(ruttel)
 			cur.execute(sql)
+			data= cur.fetchall()
+			print data
 			sql= """update clientes set telefono='%s' where clientes.rut = '%s';"""%(telefono, ruttel)
+			cur.execute(sql)
+			data= cur.fetchall()
+			print data
 			conn.commit()
 			return render_template("actualizar_exito.html",nombre="nombre")
 		except:
