@@ -1,91 +1,92 @@
 {% extends "base.html" %}
   {% block content %}
-  <div class="container">
-
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-
-            <h1 class="page-header">
-               Noticias de bases flask 
-                <small>2017 con postgres</small>
-            </h1>
-
-            <!-- First Blog Post -->
-            {% for post in posts %}
-            
-            <h2>
-                <a href="/post/{{post[0]}}">{{post[1]}}</a>
-            </h2>
-            <p class="lead">
-                by <a href="index.php">Manuel Alba</a>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-            <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            <hr>
-            <p>{{post[2]}}</p>
-            <a class="btn btn-primary" href="/post/{{post[0]}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-            <hr>
-            {% endfor %}
+  <div id="page-wrapper">  
+    <div class="container">
+    
+      <div class="row">
+      
+          <!-- Blog Entries Column -->
+          <div class="col-md-8">
           
+              <h1 class="page-header">
+                 Noticias de bases flask 
+                  <small>2017 con postgres</small>
+              </h1>
+            
+              <!-- First Blog Post -->
+              {% for post in posts %}
+              
+              <h2>
+                  <a href="/post/{{post[0]}}">{{post[1]}}</a>
+              </h2>
+              <p class="lead">
+                  by <a href="index.php">Manuel Alba</a>
+              </p>
+              <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+              <hr>
+              <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+              <hr>
+              <p>{{post[2]}}</p>
+              <a class="btn btn-primary" href="/post/{{post[0]}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
+            
+              <hr>
+              {% endfor %}
+            
+            
+            
+            
+          </div>
         
-
-
-        </div>
-
-        <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-
-
-       <!-- Side Widget Well -->
-            <div class="well">
-                <h4>Proyecto de base de datos </h4>
-                <p>Esto es un ejemplo de la ayudantia hecha por Manuel Alba.</p>
-            </div>
-
-            <!-- Blog Categories Well -->
-            <div class="well">
-                <h4>Categorias</h4>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="list-unstyled">
-
-                            {% for categoria in categorias %}
-                            <li><a href="/categoria/{{categoria[0]}}">{{categoria[1]}}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                  
-                    <!-- /.col-lg-6 -->
-                </div>
-                <!-- /.row -->
-            </div>
-
-   
-
-        </div>
-
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Bases de datos 2017</p>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-    </footer>
-
+          <!-- Blog Sidebar Widgets Column -->
+          <div class="col-md-4">
+          
+          
+          
+         <!-- Side Widget Well -->
+              <div class="well">
+                  <h4>Proyecto de base de datos </h4>
+                  <p>Esto es un ejemplo de la ayudantia hecha por Manuel Alba.</p>
+              </div>
+            
+              <!-- Blog Categories Well -->
+              <div class="well">
+                  <h4>Categorias</h4>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <ul class="list-unstyled">
+                          
+                              {% for categoria in categorias %}
+                              <li><a href="/categoria/{{categoria[0]}}">{{categoria[1]}}</a>
+                              </li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                    
+                      <!-- /.col-lg-6 -->
+                  </div>
+                  <!-- /.row -->
+              </div>
+            
+            
+            
+          </div>
+        
+      </div>
+      <!-- /.row -->
+    
+      <hr>
+    
+      <!-- Footer -->
+      <footer>
+          <div class="row">
+              <div class="col-lg-12">
+                  <p>Copyright &copy; Bases de datos 2017</p>
+              </div>
+              <!-- /.col-lg-12 -->
+          </div>
+          <!-- /.row -->
+      </footer>
+    
+  </div>
 </div>
-
   {% endblock %}
