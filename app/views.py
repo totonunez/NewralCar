@@ -22,6 +22,8 @@ def index():
 	print sql 
 	cur.execute(sql)
 	cantidad_clientes  = cur.fetchall()
+	conn.commit()
+	
 
 	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
 
