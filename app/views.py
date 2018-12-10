@@ -96,18 +96,21 @@ def actualizar():
 @app.route('/ACTUALIZAR_DUENO',methods=['GET','POST'])
 def actualizardueno():
 	if request.method == 'POST':
-		rutdueno = resquest.form['RUT']
-		patente2 = request.form['PATENTE']
-		sql= """select * from autos where autos.patente = '%s' for update;"""%(patente2)
-		cur.execute(sql)
-		data=cur.fetchall()
-		if data:
-			try:
-				sql="""update autos set rut='%s';"""%(rutdueno)
-				cur.execute(sql)
-				return render_template("actualizar_exito.html",nombre="nombre")
-			except:		
-				return render_template("error_actualizar_dueno.html",nombre="nombre")	
+		try:
+			rutdueno = request.form['RUT']
+			patente2 = request.form['PATENTE']
+			sql= """select * from autos where autos.patente = '%s' for update;"""%(patente2)
+			cur.execute(sql)
+			data=cur.fetchall()
+			if data:
+				try:
+					sql="""update autos set rut='%s';"""%(rutdueno)
+					cur.execute(sql)
+					return render_template("actualizar_exito.html",nombre="nombre")
+				except:		
+					return render_template("error_actualizar_dueno.html",nombre="nombre")
+		except:
+			return render_template("actualizar_error.html",nombre="nombre")
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")
 
