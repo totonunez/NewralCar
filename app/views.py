@@ -11,17 +11,17 @@ cur = conn.cursor()
 def index():
 	sql ="""
 	select count(*) from autos;
-	"""
-	print sql 
+	""" 
 	cur.execute(sql)
 	cantidad_auto  = cur.fetchall()
 
 	sql ="""
 	select count(*) from clientes;
-	"""
-	print sql 
+	""" 
 	cur.execute(sql)
 	cantidad_clientes  = cur.fetchall()
+
+	conn.commit()
 
 	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
 
