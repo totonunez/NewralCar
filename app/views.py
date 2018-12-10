@@ -118,7 +118,7 @@ def actualizardueno():
 @app.route('/ACTUALIZAR_FECHADEBE',methods=['GET','POST'])
 def actualizardebe():
 	if request.method == 'POST':
-		ruta = resquest.form['RUT']
+		ruta = request.form['RUT']
 		fecha = request.form['FECHA_NUEVA']
 		id = request.form['IDMULTA']
 		try:
@@ -136,7 +136,7 @@ def actualizardebe():
 @app.route('/ACTUALIZAR_TELEFONO',methods=['GET','POST'])
 def actualizartelefono():
 	if request.method == 'POST':
-		ruttel = resquest.form['RUT']
+		ruttel = request.form['RUT']
 		telefono = request.form['TELEFONO']
 		try:
 			sql= """select * from clientes where cliente.rut = '%s' for update;"""%(ruttel)
