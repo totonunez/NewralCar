@@ -3,7 +3,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">ACTUALIZAR DUEÑO DE AUTO</h1>
+            <h1 class="page-header">ACTUALIZAR TELEFONO DUEÑO</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -12,21 +12,20 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    INGRESE EL RUT DEL DUEÑO NUEVO DEL AUTO
+                    INGRESE EL RUT DE CLIENTE Y EL NUMERO DE TELEFONO NUEVO A CAMBIAR 
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
                             <p style="color:#ff0000;">PRECAUCION: SI EL DUEÑO NO EXISTE EN EL SISTEMA, USTED DEBERA CREARLO</p>
                               <br>
-                              <form action="/ACTUALIZAR_DUENO", method="post">
-                                PATENTE:<br>
-                                <input type="text" name="PATENTE">
-                                    <br>
+                              <form action="/ACTUALIZAR_TELEFONO", method="post">
                               RUT:<br>
                               <input type="text" name="RUT">
-                                  <br>
-                                  <br>
+                              <br>
+                              TELEFONO:<br>
+                             <input type="text" name="TELEFONO">
+                                <br>
                               <input type="submit" value="ACTUALIZAR">
                               </form> 
 
