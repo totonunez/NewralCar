@@ -136,10 +136,7 @@ def actualizardebe():
 			print cur.execute(sql)
 			data= cur.fetchall()
 			print data
-			conn.commit()
 			print cur.execute(sql2)
-			data = cur.fetchall()
-			print data
 			conn.commit()
 			return render_template("actualizar_exito.html",nombre="nombre")
 		except:
