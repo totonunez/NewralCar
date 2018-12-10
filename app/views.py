@@ -144,7 +144,7 @@ def actualizartelefono():
 		except:
 			return render_template("actualizar_error.html",nombre="nombre")
 	else:
-		return render_template("actualizar_telefono_dueno.html",nombre="nombre")	
+		return render_template("actulizar_telefono_dueno.html",nombre="nombre")	
 
 
 @app.route('/CREAR',methods=['GET','POST'])
