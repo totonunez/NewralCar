@@ -2,20 +2,63 @@
   {% block content %}
   <div id="page-wrapper">  
     <div class="container">
-    
+
       <div class="row">
-      
+
+
           <!-- Blog Entries Column -->
           <div class="col-md-8">
-          
+
               <h1 class="page-header">
-                 Noticias de bases flask 
-                  <small>2017 con postgres</small>
+                 NewRalCar 
+                  <small>Proyecto Base de Datos </small>
               </h1>
-            
+              <div class="w3-row-padding w3-margin-bottom">
+                  <div class="w3-quarter">
+                    <div class="w3-container w3-red w3-padding-16">
+                      <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                      <div class="w3-right">
+                        <h3>52</h3>
+                      </div>
+                      <div class="w3-clear"></div>
+                      <h4>Messages</h4>
+                    </div>
+                  </div>
+                  <div class="w3-quarter">
+                    <div class="w3-container w3-blue w3-padding-16">
+                      <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                      <div class="w3-right">
+                        <h3>99</h3>
+                      </div>
+                      <div class="w3-clear"></div>
+                      <h4>Views</h4>
+                    </div>
+                  </div>
+                  <div class="w3-quarter">
+                    <div class="w3-container w3-teal w3-padding-16">
+                      <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                      <div class="w3-right">
+                        <h3>23</h3>
+                      </div>
+                      <div class="w3-clear"></div>
+                      <h4>Shares</h4>
+                    </div>
+                  </div>
+                  <div class="w3-quarter">
+                    <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                      <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                      <div class="w3-right">
+                        <h3>50</h3>
+                      </div>
+                      <div class="w3-clear"></div>
+                      <h4>Users</h4>
+                    </div>
+                  </div>
+                </div>
+
               <!-- First Blog Post -->
-              {% for post in posts %}
-              
+              {% for post in faltas %}
+
               <h2>
                   <a href="/post/{{post[0]}}">{{post[1]}}</a>
               </h2>
@@ -28,33 +71,35 @@
               <hr>
               <p>{{post[2]}}</p>
               <a class="btn btn-primary" href="/post/{{post[0]}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
-            
+
               <hr>
               {% endfor %}
             
             
-            
-            
+
+
           </div>
-        
+
           <!-- Blog Sidebar Widgets Column -->
           <div class="col-md-4">
-          
-          
-          
+
+
+
          <!-- Side Widget Well -->
               <div class="well">
-                  <h4>Proyecto de base de datos </h4>
-                  <p>Esto es un ejemplo de la ayudantia hecha por Manuel Alba.</p>
+                  <h4>Colaboradores </h4>
+                  <p>Alonso Gajardo</p>
+                  <p>Diego Lagos</p>
+                  <p>Cristóbal Núñez </p>
               </div>
-            
+
               <!-- Blog Categories Well -->
               <div class="well">
                   <h4>Categorias</h4>
                   <div class="row">
                       <div class="col-lg-12">
                           <ul class="list-unstyled">
-                          
+
                               {% for categoria in categorias %}
                               <li><a href="/categoria/{{categoria[0]}}">{{categoria[1]}}</a>
                               </li>
@@ -66,16 +111,16 @@
                   </div>
                   <!-- /.row -->
               </div>
+
             
-            
-            
+
           </div>
-        
+
       </div>
       <!-- /.row -->
-    
+
       <hr>
-    
+
       <!-- Footer -->
       <footer>
           <div class="row">
@@ -86,7 +131,7 @@
           </div>
           <!-- /.row -->
       </footer>
-    
+
   </div>
 </div>
   {% endblock %}
