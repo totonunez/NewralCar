@@ -11,17 +11,17 @@ cur = conn.cursor()
 def index():
 	sql ="""
 	select count(*) from autos;
-	""" 
+	"""
+	print sql 
 	cur.execute(sql)
 	cantidad_auto  = cur.fetchall()
 
 	sql ="""
 	select count(*) from clientes;
-	""" 
+	"""
+	print sql 
 	cur.execute(sql)
 	cantidad_clientes  = cur.fetchall()
-
-	conn.commit()
 
 	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
 
@@ -42,7 +42,6 @@ def borrarauto():
 			sql= """delete from autos where autos.patente ='%s';""" %(patente)
 			print(cur.execute(sql))
 			print(sql)
-			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
 		except:
 			print("error")
@@ -127,13 +126,19 @@ def actualizardebe():
 		ruta = request.form['RUT']
 		fecha = request.form['FECHA_NUEVA']
 		id = request.form['IDMULTA']
+		sql= """select * from debe where debe.rut='%s' and id_penalizacion=%s for update;"""%(ruta, id)
+		sql2="""update debe set fecha_vencimiento='%s' where debe.rut='%s' and debe.id_penalizacion=%s;"""%(fecha,ruta, id)
+		print sql, ' ' ,slq2
 		try:
-			sql= """select * from debe where debe.rut='%s' and id_penalizacion=%s for update;"""%(ruta, id)
+			print 'intentado subir'
+			
+			
 			cur.execute(sql)
+			conn.commit()
 			data= cur.fetchall()
 			print data
-			sql="""update debe set fecha_vencimiento='%s' where debe.rut='%s' and debe.id_penalizacion=%s;"""%(fecha,ruta, id)
-			cur.execute(sql)
+			
+			cur.execute(sql2)
 			data= cur.fetchall()
 			print data
 			conn.commit()
