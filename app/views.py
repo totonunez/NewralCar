@@ -128,7 +128,7 @@ def actualizardebe():
 		id = request.form['IDMULTA']
 		sql= """select * from debe where debe.rut='%s' and id_penalizacion=%s for update;"""%(ruta, id)
 		sql2="""update debe set fecha_vencimiento='%s' where debe.rut='%s' and debe.id_penalizacion=%s;"""%(fecha,ruta, id)
-		print sql, ' ' ,slq2
+		print sql, ' ' ,sql2
 		try:
 			print 'intentado subir'
 			
