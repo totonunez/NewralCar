@@ -86,7 +86,7 @@ def eliminardebe():
 		except:
 			return render_template("eliminar_error.html",nombre="nombre")
 	else:
-		return render_template("eliminar_debe.html",nombre="nombre")
+		return render_template("eliminar_multa.html",nombre="nombre")
 
 
 @app.route('/ACTUALIZAR', methods=['GET','POST'])
