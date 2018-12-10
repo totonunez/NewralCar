@@ -259,7 +259,7 @@ def revisarubicacionesgps():
 	else:
 		return render_template("revisar_ubicacionesgps.html",nombre="nombre")
 
-@app.route('/formularios', methods=['GET', 'POST'])
+@app.route('/formularios_auto', methods=['GET', 'POST'])
 def formularios():
 	if request.method == 'POST':
 		variable =  request.form['toto']
