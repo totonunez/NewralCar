@@ -107,7 +107,7 @@ def actualizardueno():
 				print data
 				print 'intentando denuevo ctm'
 				try:
-					sql="""update autos set rut='%s';"""%(rutdueno)
+					sql="""update autos set rut='%s' where autos.patente = '%s';"""%(rutdueno, patente2)
 					cur.execute(sql)
 					return render_template("actualizar_exito.html",nombre="nombre")
 				except:		
@@ -262,7 +262,7 @@ def revisarubicacionesgps():
 	else:
 		return render_template("revisar_ubicacionesgps.html",nombre="nombre")
 
-@app.route('/formularios_auto', methods=['GET', 'POST'])
+@app.route('/formularios', methods=['GET', 'POST'])
 def formularios():
 	if request.method == 'POST':
 		variable =  request.form['toto']
