@@ -92,7 +92,7 @@ def actualizardueno():
 				sql="""update autos set rut='%s';"""%(rutdueno)
 				cur.execute(sql)
 				return render_template("actualizar_exito.html",nombre="nombre")
-			 except:		
+			except:		
 				return render_template("error_actualizar_dueno.html",nombre="nombre")	
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")
