@@ -97,12 +97,15 @@ def actualizar():
 def actualizardueno():
 	if request.method == 'POST':
 		try:
+			print 'intentado borrar la wea'
 			rutdueno = request.form['RUT']
 			patente2 = request.form['PATENTE']
 			sql= """select * from autos where autos.patente = '%s' for update;"""%(patente2)
 			cur.execute(sql)
 			data=cur.fetchall()
 			if data:
+				print data
+				print 'intentando denuevo ctm'
 				try:
 					sql="""update autos set rut='%s';"""%(rutdueno)
 					cur.execute(sql)
