@@ -17,7 +17,14 @@ def index():
 	cur.execute(sql)
 	cantidad_auto  = cur.fetchall()
 
-	return render_template("index.html",cantidad_auto=cantidad_auto)
+	sql ="""
+	select count(*) from clientes;
+	"""
+	print sql 
+	cur.execute(sql)
+	cantidad_clientes  = cur.fetchall()
+
+	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
 
 
 @app.route('/ELIMINAR',methods=['GET', 'POST'])
