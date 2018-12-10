@@ -9,22 +9,7 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-	
-	sql ="""
-	select count(*) from autos;
-	"""
-	print sql 
-	cur.execute(sql)
-	cantidad_auto  = cur.fetchall()
-
-	sql ="""
-	select count(*) from clientes;
-	"""
-	print sql 
-	cur.execute(sql)
-	cantidad_clientes  = cur.fetchall()
-
-	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
+	return render_template("index.html",nombre="nombre")
 
 
 @app.route('/ELIMINAR',methods=['GET', 'POST'])
@@ -76,7 +61,7 @@ def borrarcliente():
 
 
 @app.route('/ELIMINAR_DEBE',methods=['GET', 'POST'])
-def borrardebe():
+def eliminardebe():
 	if request.method == 'POST':
 		iddebe = request.form['ID']
 		try:
@@ -100,12 +85,12 @@ def actualizardueno():
 		rutdueno = resquest.form['RUT']
 		patente2 = request.form['PATENTE']
 		try:
-			sql= """update set auto.montrut = %s, from autos where autos.patente = %s """%(rutdueno,patente2)
-			cur.excecute(sql)
+			sql= """update set auto.rut = %s, from autos where autos.patente = %s """%(rutdueno,patente2)
+			cur.execute(sql)
 			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("actualizar_ok.html",nombre="nombre")
 		except:
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("crear_dueno.html",nombre="nombre")
 	else:
 		return render_template("actualizar_dueno.html",nombre="nombre")
 
@@ -117,13 +102,13 @@ def actualizardebe():
 		fecha = request.form['FECHA_VENC']
 		try:
 			sql= """update set auto.fecha_vencimiento = %s, from autos where autos.patente = %s """%(fecha,rutdebe)
-			cur.excecute(sql)
+			cur.execute(sql)
 			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("actualizar_ok.html",nombre="nombre")
 		except:
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("actualizar_error.html",nombre="nombre")
 	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")	
+		return render_template("actualizar_debe.html",nombre="nombre")	
 
 @app.route('/ACTUALIZAR_TELEFONO',methods=['GET','POST'])
 def actualizartelefono():
@@ -132,13 +117,14 @@ def actualizartelefono():
 		telefono = request.form['TELEFONO']
 		try:
 			sql= """update set clientes.rut = %s, from clientes where clientes.patente = %s """%(ruttel,telefono)
-			cur.excecute(sql)
+			cur.execute(sql)
 			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("actualizar_ok.html",nombre="nombre")
 		except:
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("actualizar_error.html",nombre="nombre")
 	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")	
+		return render_template("actualizar_telefono.html",nombre="nombre")	
+
 
 @app.route('/CREAR',methods=['GET','POST'])
 def crear():
@@ -153,16 +139,101 @@ def crearsensor():
 		unidad = request.form['TIPO_UNIDAD']
 		try:
 			sql= """insert into sensores values(%s, %s, %s, %s) """%(idsensor, nombresensor, presicion, unidad)
-			cur.excecute(sql)
+			cur.execute(sql)
 			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("crear_ok.html",nombre="nombre")
 		except:
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("crear_error.html",nombre="nombre")
 	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")
+		return render_template("crear_sensor.html",nombre="nombre")
 
+@app.route('/CREAR_AUTO',methods=['GET','POST'])
+def crearauto():
+	if request.method == 'POST':
+		patentec = request.form['PATENTE']
+		rutc = request.form['RUT']
+		largoc = request.form['LARGO']
+		anchoc = request.form['ANCHO']
+		altoc = request.form['ALTO']
+		peso_neto = request.form['PESO_NETO']
+		combustible = request.form['TIPO_COMBUSTIBLE']
+		tipo_auto = request.form['TIPO_AUTO']
+		pasajeros = request.form['MAXIMO_PASAJEROS']
+		aro = request.form['NUM_ARO']
+		try:
+			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
+			cur.execute(sql)
+			conn.commit()
+			return render_template("crear_ok.html", nombre="nombre")
+		except:
+			return render_template("crear_error.html",nombre="nombre")
+	else:
+		return render_template("crear_auto.html",nombre="nombre")
 
+@app.route('/CREAR_CLIENTE',methods=['GET','POST'])
+def crearcliente():
+	if request.method == 'POST':
+		rutd = request.form['RUT']
+		digito = request.form['DIGITO']
+		nombred = request.form['NOMBRE']
+		apellidod = request.form['APELLIDO']
+		email = request.form['EMAIL']
+		telefonod = request.form['TELEFONO']
+		url = request.form['URL']
+		try:
+			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
+			cur.execute(sql)
+			conn.commit()
+			return render_template("crear_ok.html", nombre="nombre")
+		except:
+			return render_template("crear_error.html",nombre="nombre")
+	else:
+		return render_template("crear_cliente.html",nombre="nombre")
 
+@app.route('/REVISAR',methods=['GET','POST'])
+def revisar():
+	return render_template("revisar_inicio.html")
+
+@app.route('/REVISAR_FALTAS',methods=['GET','POST'])
+def revisarfaltas():
+	if request.method == 'POST':
+		rutr = request.form['rut']
+		try:
+			sql = """select faltas.monto from clientes, debe, faltas where clientes.rut = %s AND clientes.rut = debe.rut AND debe.id_penalizacion=faltas.id_penalizacion;"""
+			cur.execute(sql)
+			conn.commit()
+			return render_template("revisar_ok.html",nombre="nombre")
+		except:
+			return render_template("revisar_fallo.html",nombre="nombre")
+	else:
+		return render_template("revisar_faltas.html",nombre="nombre")
+
+@app.route('/REVISAR_CHOQUEMAYOR',methods=['GET','POST'])
+def revisarmayorchoque():
+	if request.method == 'POST':
+		try:
+			sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk where kk.cantidad  = (select max(cosas) from (select count(*) as cosas from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
+			cur.execute(sql)
+			conn.commit()
+			return render_template("revisar_ok.html",nombre="nombre")
+		except:
+			return render_template("revisar_fallo.html",nombre="nombre")
+	else:
+		return render_template("revisar_choquemayor.html",nombre="nombre")
+
+@app.route('/REVISAR_UICACIONESGPS',methods=['GET','POST'])
+def revisarubicacionesgps():
+	if request.method == 'POST':
+		patentegps = request.form['PATENTE']
+		try:
+			sql = """SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud FROM mediciones where mediciones.patente=%s GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente ORDER BY  mediciones.fecha, mediciones.hora;"""%(patentegps)
+			cur.execute(sql)
+			conn.commit()
+			return render_template("revisar_ok.html",nombre="nombre")
+		except:
+			return render_template("revisar_fallo.html",nombre="nombre")
+	else:
+		return render_template("revisar_ubicacionesgps.html",nombre="nombre")
 
 @app.route('/formularios', methods=['GET', 'POST'])
 def formularios():
@@ -175,6 +246,7 @@ def formularios():
 		conn.commit()
 
 	return render_template("forms.html",nombre="nombre")
+
 
 @app.route('/tablas')
 def tablas():
