@@ -9,7 +9,15 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-	return render_template("index.html",nombre="nombre")
+	
+	sql ="""
+	select count(*) from autos;
+	"""
+	print sql 
+	cur.execute(sql)
+	cantidad_auto  = cur.fetchall()
+
+	return render_template("index.html",cantidad_auto=cantidad_auto)
 
 
 @app.route('/ELIMINAR',methods=['GET', 'POST'])
