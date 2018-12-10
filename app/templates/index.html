@@ -5,27 +5,48 @@
 
       <div class="row">
 
-
           <!-- Blog Entries Column -->
           <div class="col-md-8">
 
-            <h1 class="page-header">
-               NewRalCar 
-                <small>Proyecto Base de Datos </small>
-            </h1>
+              <h1 class="page-header">
+                 NewRalCar 
+                  <small>Proyecto Base de Datos </small>
+              </h1>
+
+              <!-- First Blog Post -->
+              {% for post in faltas %}
+
+              <h2>
+                  <a href="/post/{{post[0]}}">{{post[1]}}</a>
+              </h2>
+              <p class="lead">
+                  by <a href="index.php">Manuel Alba</a>
+              </p>
+              <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+              <hr>
+              <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+              <hr>
+              <p>{{post[2]}}</p>
+              <a class="btn btn-primary" href="/post/{{post[0]}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+              <hr>
+              {% endfor %}
+            
+            
+
+
           </div>
-          
 
           <!-- Blog Sidebar Widgets Column -->
-          
+          <div class="col-md-4">
 
 
 
          <!-- Side Widget Well -->
               <div class="well">
                   <h4>Colaboradores </h4>
-                  <p>Alonso Gajardo</p>
                   <p>Diego Lagos</p>
+                  <p>Alonso Gajardo</p>
                   <p>Cristóbal Núñez </p>
               </div>
 
