@@ -42,6 +42,7 @@ def borrarauto():
 			sql= """delete from autos where autos.patente ='%s';""" %(patente)
 			print(cur.execute(sql))
 			print(sql)
+			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
 		except:
 			print("error")
