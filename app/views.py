@@ -156,7 +156,7 @@ def actualizartelefono():
 	if request.method == 'POST':
 		ruttel = request.form['RUT']
 		telefono = request.form['TELEFONO']
-		sql= """select * from clientes where cliente.rut = '%s' for update;"""%(ruttel)
+		sql= """select * from clientes where clientes.rut = '%s' for update;"""%(ruttel)
 		sql2= """update clientes set telefono='%s' where clientes.rut = '%s';"""%(telefono, ruttel)
 		print sql, '\n', sql2
 		try:
