@@ -272,7 +272,7 @@ def revisarmayorchoque():
 	conn.commit()
 		
 	
-	return render_template("revisar_choquemayor.html",granchoque = "granchoque")
+	return render_template("revisar_choquemayor.html",granchoque = granchoque)
 
 @app.route('/REVISAR_UICACIONESGPS',methods=['GET','POST'])
 def revisarubicacionesgps():
