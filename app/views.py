@@ -252,16 +252,21 @@ def revisarfaltas():
 
 @app.route('/REVISAR_CHOQUEMAYOR',methods=['GET','POST'])
 def revisarmayorchoque():
-	if request.method == 'POST':
-		try:
-			sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk where kk.cantidad  = (select max(cosas) from (select count(*) as cosas from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
-			cur.execute(sql)
-			conn.commit()
-			return render_template("revisar_ok.html",nombre="nombre")
-		except:
-			return render_template("revisar_fallo.html",nombre="nombre")
-	else:
-		return render_template("revisar_choquemayor.html",nombre="nombre")
+	
+		
+	sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora from choques,
+	(select count(*) as cantidad, id_evento from involucrados group by id_evento
+	) as kk where kk.cantidad  = (select max(cosas) from (select count(*) as cosas 
+	from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
+
+	cur.execute(sql)
+	print sql
+	granchoque = cur.fetchall
+	
+	conn.commit()
+		
+	
+	return render_template("revisar_choquemayor.html",granchoque = granchoque")
 
 @app.route('/REVISAR_UICACIONESGPS',methods=['GET','POST'])
 def revisarubicacionesgps():

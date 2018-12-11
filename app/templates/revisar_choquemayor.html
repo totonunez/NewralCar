@@ -3,7 +3,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Ingreso de Cliente</h1>
+                        <h1 class="page-header">Choque que tuvo mayor cantidad de Afectados</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -12,43 +12,53 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Porfavor ingrese todos los datos solicitados 
+                                Caracteristicas del Evento 
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-6">
                                             <div class="w3-row-padding w3-center w3-margin-top">
                                                     <div class="w3-third">
-                                                      <div class="w3-card w3-container" style="min-height:460px">
-                                                      <h3>Responsive</h3><br>
+                                                      <div class="w3-card w3-car" style="min-height:460px">
+                                                      <h3>Mayor Accidente</h3><br>
                                                       <i class="fa fa-desktop w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-                                                      <p>Built-in responsiveness</p>
+                                                      <p>
+                                                        {{granchoque[0][0]}}                                                      </p>
                                                       <p>Mobile first fluid grid</p>
                                                       <p>Fits any screen sizes</p>
                                                       <p>PC Tablet and Mobile</p>
                                                       </div>
                                                     </div>
                                                     
-                                                    <div class="w3-third">
-                                                      <div class="w3-card w3-container" style="min-height:460px">
-                                                      <h3>Standard CSS</h3><br>
-                                                      <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-                                                      <p>Standard CSS only</p>
-                                                      <p>Easy to learn</p>
-                                                      <p>No need for jQuery</p>
-                                                      <p>No JavaScript library</p>
-                                                      </div>
-                                                    </div>
                                                     
                                                     <div class="w3-third">
                                                       <div class="w3-card w3-container" style="min-height:460px">
-                                                      <h3>Design</h3><br>
+                                                      <h3>Calle</h3><br>
+                                                      <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+                                                      <p>{{granchoque[0][1]}}</p>
+
+                                                      </div>
+                                                    </div>
+                                    
+                                                    <div class="w3-third">
+                                                      <div class="w3-card w3-container" style="min-height:460px">
+                                                      <h3>Numeracion</h3><br>
                                                       <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-                                                      <p>Paper like design</p>
+                                                      <p>{{granchoque[0][2]}}</p>
                                                       <p>Bold colors and shadows</p>
                                                       <p>Equal across platforms</p>
                                                       <p>Equal across devices</p>
-                                                      </div>
+                                                    </div>
+
+                                                    <div class="w3-third">
+                                                        <div class="w3-card w3-container" style="min-height:460px">
+                                                        <h3>Fecha</h3><br>
+                                                        <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+                                                        <p>{{granchoque[0][3]}}</p>
+                                                        <p>Bold colors and shadows</p>
+                                                        <p>Equal across platforms</p>
+                                                        <p>Equal across devices</p>
+                                                    </div>
                                                 </div>
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
