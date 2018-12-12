@@ -47,7 +47,7 @@ def index():
 
 @app.route('/ELIMINAR',methods=['GET', 'POST'])
 def borrar():
-	return render_template("eliminar_inicio.html",nombre="nombre")
+	return render_template("eliminar_inicio.html")
 
 
 @app.route('/ELIMINAR_AUTO',methods=['GET', 'POST'])
@@ -64,12 +64,12 @@ def borrarauto():
 			print(cur.execute(sql2))
 			print(sql2)
 			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("eliminacion_ok.html")
 		except:
 			print("error")
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("eliminar_error.html")
 	else:
-		return render_template("eliminar_auto.html",nombre="nombre")
+		return render_template("eliminar_auto.html")
 
 
 
@@ -88,15 +88,15 @@ def borrarcliente():
 			print(x)
 			if x is None:
 				print("sql falla")
-				return render_template("eliminar_error.html",nombre="nombre")
+				return render_template("eliminar_error.html")
 			
 			print(cur.execute(sql2))
 			conn.commit()
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("eliminacion_ok.html")
 		except:
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("eliminar_error.html")
 	else:
-		return render_template("eliminar_cliente.html",nombre="nombre")
+		return render_template("eliminar_cliente.html")
 
 
 @app.route('/ELIMINAR_DEBE',methods=['GET', 'POST'])
@@ -110,11 +110,11 @@ def eliminardebe():
 			
 			cur.execute(sql)
 			conn.commit
-			return render_template("eliminacion_ok.html",nombre="nombre")
+			return render_template("eliminacion_ok.html")
 		except:
-			return render_template("eliminar_error.html",nombre="nombre")
+			return render_template("eliminar_error.html")
 	else:
-		return render_template("eliminar_multa.html",nombre="nombre")
+		return render_template("eliminar_multa.html")
 
 
 @app.route('/ACTUALIZAR', methods=['GET','POST'])
@@ -143,13 +143,13 @@ def actualizardueno():
 					conn.commit()
 					data=cur.fetchall()
 					print data
-					return render_template("actualizar_exito.html",nombre="nombre")
+					return render_template("actualizar_exito.html")
 				except:		
-					return render_template("error_actualizar_dueno.html",nombre="nombre")
+					return render_template("error_actualizar_dueno.html")
 		except:
-			return render_template("actualizar_error.html",nombre="nombre")
+			return render_template("actualizar_error.html")
 	else:
-		return render_template("actualizar_dueno.html",nombre="nombre")
+		return render_template("actualizar_dueno.html")
 
 
 @app.route('/ACTUALIZAR_FECHADEBE',methods=['GET','POST'])
@@ -169,11 +169,11 @@ def actualizardebe():
 			print data
 			print cur.execute(sql2)
 			conn.commit()
-			return render_template("actualizar_exito.html",nombre="nombre")
+			return render_template("actualizar_exito.html")
 		except:
-			return render_template("actualizar_error.html",nombre="nombre")
+			return render_template("actualizar_error.html")
 	else:
-		return render_template("actualizar_fecha_debe.html",nombre="nombre")	
+		return render_template("actualizar_fecha_debe.html")	
 
 @app.route('/ACTUALIZAR_TELEFONO',methods=['GET','POST'])
 def actualizartelefono():
@@ -193,11 +193,11 @@ def actualizartelefono():
 			conn.commit()
 			data= cur.fetchall()
 			print data
-			return render_template("actualizar_exito.html",nombre="nombre")
+			return render_template("actualizar_exito.html")
 		except:
-			return render_template("actualizar_error.html",nombre="nombre")
+			return render_template("actualizar_error.html")
 	else:
-		return render_template("actulizar_telefono_dueno.html",nombre="nombre")	
+		return render_template("actulizar_telefono_dueno.html")	
 
 
 
@@ -220,9 +220,9 @@ def crearauto():
 			conn.commit()
 			return render_template("crear_ok.html", nombre="nombre")
 		except:
-			return render_template("crear_error.html",nombre="nombre")
+			return render_template("crear_error.html")
 	else:
-		return render_template("crear_auto.html",nombre="nombre")
+		return render_template("crear_auto.html")
 
 @app.route('/CREAR_CLIENTE',methods=['GET','POST'])
 def crearcliente():
@@ -240,9 +240,9 @@ def crearcliente():
 			conn.commit()
 			return render_template("crear_exito.html", nombre="nombre")
 		except:
-			return render_template("crear_error.html",nombre="nombre")
+			return render_template("crear_error.html")
 	else:
-		return render_template("crear_cliente.html",nombre="nombre")
+		return render_template("crear_cliente.html")
 
 @app.route('/REVISAR',methods=['GET','POST'])
 def revisar():
@@ -256,11 +256,11 @@ def revisarfaltas():
 			sql = """select faltas.monto from clientes, debe, faltas where clientes.rut = %s AND clientes.rut = debe.rut AND debe.id_penalizacion=faltas.id_penalizacion;"""
 			cur.execute(sql)
 			conn.commit()
-			return render_template("revisar_exito.html",nombre="nombre")
+			return render_template("revisar_exito.html")
 		except:
-			return render_template("revisar_fallo.html",nombre="nombre")
+			return render_template("revisar_fallo.html")
 	else:
-		return render_template("revisar_faltas.html",nombre="nombre")
+		return render_template("revisar_faltas.html")
 
 @app.route('/REVISAR_CHOQUEMAYOR',methods=['GET','POST'])
 def revisarmayorchoque():
@@ -290,13 +290,13 @@ def revisarubicacionesgps():
 			sql = """SELECT mediciones.patente, mediciones.hora FROM mediciones where mediciones.patente=%s  and mediciones.id_sensor =%s and mediciones.fecha = %s ORDER BY mediciones.hora;"""%(patente, sensor_id, fecha_medicion)
 			cur.execute(sql)
 			conn.commit()
-			return render_template("revisar_exito.html",nombre="nombre")
+			return render_template("revisar_exito.html")
 		except:
-			return render_template("revisar_fallo.html",nombre="nombre")
+			return render_template("revisar_fallo.html")
 	else:
-		return render_template("revisar_ubicacionesgps.html",nombre="nombre")
+		return render_template("visualidad_mediciones.html")
 
 
 @app.route('/tablas')
 def tablas():
-	return render_template("tables.html",nombre="nombre")
+	return render_template("tables.html")
