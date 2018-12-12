@@ -35,16 +35,16 @@ def ELIMINAR_CLIENTE(RUT):
         #try:
         print cur.execute(SQL2)
         DATA_BORRADO_INVOLUCRADOS=cur.fetchall()
-        #print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
+        print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
         print cur.execute(SQL3)
-        DATA_BORRADO_MEDICIONES=cur.fetchall()
+        #DATA_BORRADO_MEDICIONES=cur.fetchall()
         #print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
         print cur.execute(SQL4)
         DATA_BORRADO_AUTO=cur.fetchall()
-        #print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
+        print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
         print cur.execute(SQL5)
         DATA_BORRADO_DEBE=cur.fetchall()
-        #print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
+        print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
         print cur.execute(SQL6)
         DATA_BORRADO_CLIENTES=cur.fetchall()
         #print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
