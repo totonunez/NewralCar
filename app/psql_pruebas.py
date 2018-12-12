@@ -194,11 +194,11 @@ def INGRESAR_AUTO_NUEVO(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBU
         conn.commit()
         print 'COMPROBACION DE ENTRADA: ', DATA_COMPROBACION_AUTO_NUEVO
     except:
-        print 'ERROR EN EL INGRESO DE UN AUTO NUEVO'
+        print 'ERROR EN EL INGRESO DE UN AUTO NUEVO, DEBE INGRESAR UN RUT QUE EXISTE EN CLIENTES'
 
 def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
     SQL="""INSERT INTO clientes 
-           VALUES '%s','%s','%s','%s','%s','%s','%s';"""%(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL)
+           VALUES ('%s','%s','%s','%s','%s','%s','%s');"""%(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL)
     print SQL
     try:
         cur.execute(SQL)
