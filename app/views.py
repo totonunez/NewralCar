@@ -214,8 +214,9 @@ def verisarubicacion():
 		try:
 			sql = """SELECT mediciones.patente, mediciones.hora FROM mediciones where mediciones.patente=%s  and mediciones.id_sensor =%s and mediciones.fecha = %s ORDER BY mediciones.hora;"""%(patente, sensor_id, fecha_medicion)
 			cur.execute(sql)
+			mediciones = cur.fetchall()
 			conn.commit()
-			return render_template("revisar_exito.html")
+			return render_template("revisar_exito.html", mediciones=mediciones)
 		except:
 			return render_template("revisar_fallo.html")
 	else:
