@@ -17,37 +17,37 @@ def ELIMINAR_CLIENTE(RUT):
     PATENTE=cur.fetchone()
     print 'SE ELIMINARAN LOS ELEMENTOS DE LA PATENTE: ', PATENTE 
     SQL2=""" DELETE FROM involucrados
-             WHERE involucrados.patente='%s';"""%(PATENTE)
+             WHERE involucrados.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL2
     SQL3=""" DELETE FROM mediciones
              WHERE mediciones.patente='%s';"""%(PATENTE)
     print SQL3
     SQL4=""" DELETE FROM autos
-             WHERE autos.patente='%s';"""%(PATENTE)
+             WHERE autos.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL4
     SQL5=""" DELETE FROM debe
-             WHERE debe.rut='%s';"""%(RUT)
+             WHERE debe.rut='%s' RETURNING *;"""%(RUT)
     print SQL5
     SQL6=""" DELETE FROM clientes
-             WHERE clientes.rut='%s';"""%(RUT)
+             WHERE clientes.rut='%s' RETURNING *;"""%(RUT)
     print SQL6
     if PATENTE:
         #try:
-        if cur.execute(SQL2) is not None:
-            DATA_BORRADO_INVOLUCRADOS=cur.fetchone()
-            print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
+        print cur.execute(SQL2)
+        DATA_BORRADO_INVOLUCRADOS=cur.fetchall()
+        print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
         print cur.execute(SQL3)
-        DATA_BORRADO_MEDICIONES=cur.fetchone()
-        print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
+        #DATA_BORRADO_MEDICIONES=cur.fetchall()
+        #print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
         print cur.execute(SQL4)
-        DATA_BORRADO_AUTO=cur.fetchone()
+        DATA_BORRADO_AUTO=cur.fetchall()
         print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
         print cur.execute(SQL5)
-        DATA_BORRADO_DEBE=cur.fetchone()
+        DATA_BORRADO_DEBE=cur.fetchall()
         print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
         print cur.execute(SQL6)
-        DATA_BORRADO_CLIENTES=cur.fetchone()
-        print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
+        DATA_BORRADO_CLIENTES=cur.fetchall()
+        #print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
         #except:
          #   print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
     else:
@@ -56,13 +56,13 @@ def ELIMINAR_CLIENTE(RUT):
 
 def ELIMINAR_AUTO(PATENTE):
     SQL2=""" DELETE FROM involucrados
-             WHERE involucrados.patente='%s';"""%(PATENTE)
+             WHERE involucrados.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL2
     SQL3=""" DELETE FROM mediciones
-             WHERE mediciones.patente='%s';"""%(PATENTE)
+             WHERE mediciones.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL3
     SQL4=""" DELETE FROM autos
-             WHERE autos.patente='%s';"""%(PATENTE)
+             WHERE autos.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL4
     try:
         cur.execute(SQL2)
@@ -79,7 +79,7 @@ def ELIMINAR_AUTO(PATENTE):
 
 def ELIMINAR_MULTA(RUT):
     SQL5=""" DELETE FROM debe
-             WHERE debe.rut='%s';"""%(RUT)
+             WHERE debe.rut='%s' RETURNING *;"""%(RUT)
     print SQL5
     try:
         cur.execute(SQL5)
