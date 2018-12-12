@@ -209,7 +209,7 @@ def crearauto():
 		pasajeros = request.form['MAXIMO_PASAJEROS']
 		aro = request.form['NUM_ARO']
 		try:
-			sql = """insert into autos values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
+			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("crear_ok.html", nombre="nombre")
@@ -229,7 +229,7 @@ def crearcliente():
 		telefonod = request.form['TELEFONO']
 		url = request.form['URL']
 		try:
-			sql = """insert into clientes values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
+			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("crear_exito.html", nombre="nombre")
@@ -282,23 +282,11 @@ def revisarubicacionesgps():
 			sql = """SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud FROM mediciones where mediciones.patente=%s GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente ORDER BY  mediciones.fecha, mediciones.hora;"""%(patentegps)
 			cur.execute(sql)
 			conn.commit()
-			return render_template("revisar_exito.html",nombre="nombre")
+			retusrn render_template("revisar_exito.html",nombre="nombre")
 		except:
 			return render_template("revisar_fallo.html",nombre="nombre")
 	else:
 		return render_template("revisar_ubicacionesgps.html",nombre="nombre")
-
-@app.route('/formularios', methods=['GET', 'POST'])
-def formularios():
-	if request.method == 'POST':
-		variable =  request.form['toto']
-		sql = """insert into comentarios (post_id,usuario_id,comentario)
-		values (1,1,'%s')
-		 """%(variable)
-		cur.execute(sql)
-		conn.commit()
-
-	return render_template("formulario_auto.html",nombre="nombre")
 
 
 @app.route('/tablas')
