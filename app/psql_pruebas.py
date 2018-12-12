@@ -54,7 +54,7 @@ def ELIMINAR_CLIENTE(RUT):
 
         print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA' 
 
-        def ELIMINAR_AUTO(PATENTE):
+def ELIMINAR_AUTO(PATENTE):
     SQL2=""" DELETE FROM involucrados
              WHERE involucrados.patente='%s';"""%(PATENTE)
     print SQL2
