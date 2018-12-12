@@ -9,7 +9,8 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-	sql ="""
+	try:
+		sql ="""
 	select count(*) from autos;
 	"""
 	print sql 
@@ -35,6 +36,9 @@ def index():
 	cur.execute(sql)
 	granchoque = cur.fetchall()
 	conn.commit()
+	except expression as identifier:
+		pass
+	
 
 	
 
@@ -276,12 +280,14 @@ def revisarmayorchoque():
 	
 	return render_template("revisar_choquemayor.html",granchoque = granchoque)
 
-@app.route('/REVISAR_UBICACIONESGPS',methods=['GET','POST'])
+@app.route('/REVISAR_MEDICIONES',methods=['GET','POST'])
 def revisarubicacionesgps():
 	if request.method == 'POST':
-		patentegps = request.form['PATENTE']
+		patente = request.form['PATENTE']
+		sensor_id = request.form['SENSOR_ID']
+		fecha_medicion = request.form['FECHA']
 		try:
-			sql = """SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud FROM mediciones where mediciones.patente=%s GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente ORDER BY  mediciones.fecha, mediciones.hora;"""%(patentegps)
+			sql = """SELECT mediciones.patente, mediciones.hora FROM mediciones where mediciones.patente=%s  and mediciones.id_sensor =%s and mediciones.fecha = %s ORDER BY mediciones.hora;"""%(patente, sensor_id, fecha_medicion)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("revisar_exito.html",nombre="nombre")
