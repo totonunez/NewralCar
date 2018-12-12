@@ -229,7 +229,7 @@ def crearcliente():
 		telefonod = request.form['TELEFONO']
 		url = request.form['URL']
 		try:
-			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
+			sql = """insert into clientes values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("crear_exito.html", nombre="nombre")
