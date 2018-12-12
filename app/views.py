@@ -282,7 +282,7 @@ def revisarubicacionesgps():
 			sql = """SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud FROM mediciones where mediciones.patente=%s GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente ORDER BY  mediciones.fecha, mediciones.hora;"""%(patentegps)
 			cur.execute(sql)
 			conn.commit()
-			retusrn render_template("revisar_exito.html",nombre="nombre")
+			return render_template("revisar_exito.html",nombre="nombre")
 		except:
 			return render_template("revisar_fallo.html",nombre="nombre")
 	else:
