@@ -1,6 +1,6 @@
 from configuraciones import *
 import psycopg2
-conn=psycopg2.connect("dbname=%s user=%s password=%s"%(databse, user, passwd))
+conn=psycopg2.connect("dbname=%s user=%s password=%s"%(database, user, passwd))
 cur=conn.cursor()
 import time
 
@@ -8,6 +8,7 @@ import time
 RUT='19233498','10233198'
 
 def ELIMINAR_CLIENTE(RUT):
+    RUT=str(RUT)
     SQL=""" SELECT patente
             FROM autos 
             WHERE autos.rut='%s';"""(RUT)
@@ -52,8 +53,7 @@ def ELIMINAR_CLIENTE(RUT):
         except:
             print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
     else:
-        print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA'
-    
+        print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA' 
 
 def ELIMINAR_AUTO(PATENTE):
     SQL2=""" DELETE FROM involucrados
@@ -124,7 +124,7 @@ def ACTUALIZAR_FECHA_DEBE(RUT, FECHA_NUEVA, ID_MULTA):
             SET fecha_vencimiento='%s'
             WHERE debe.rut='%s'
             AND debe.id_penalizacion=%s;"""%(FECHA_NUEVA, RUT,ID_MULTA)
-	print SQL2
+    print SQL2
     cur.execute(SQL)
     DATA_CLIENTE_MULTA=cur.fetchall()
     print DATA_CLIENTE_MULTA
