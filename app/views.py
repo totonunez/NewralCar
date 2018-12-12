@@ -262,26 +262,10 @@ def revisarfaltas():
 	else:
 		return render_template("revisar_faltas.html")
 
-@app.route('/REVISAR_CHOQUEMAYOR',methods=['GET','POST'])
-def revisarmayorchoque():
-	
-		
-	sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora from choques,
-	(select count(*) as cantidad, id_evento from involucrados group by id_evento
-	) as kk where kk.cantidad  = (select max(cosas) from (select count(*) as cosas 
-	from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
 
-	cur.execute(sql)
-	print sql
-	granchoque = cur.fetchall
-	
-	conn.commit()
-		
-	
-	return render_template("revisar_choquemayor.html",granchoque = granchoque)
 
 @app.route('/REVISAR_MEDICIONES',methods=['GET','POST'])
-def revisarubicacionesgps():
+def verisarubicacion():
 	if request.method == 'POST':
 		patente = request.form['PATENTE']
 		sensor_id = request.form['SENSOR_ID']
@@ -294,7 +278,7 @@ def revisarubicacionesgps():
 		except:
 			return render_template("revisar_fallo.html")
 	else:
-		return render_template("visualidad_mediciones.html")
+		return render_template("visualisar_mediciones.html")
 
 
 @app.route('/tablas')
