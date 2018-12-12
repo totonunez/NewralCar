@@ -20,34 +20,34 @@ def ELIMINAR_CLIENTE(RUT):
              WHERE involucrados.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL2
     SQL3=""" DELETE FROM mediciones
-             WHERE mediciones.patente='%s' RETURNING *;"""%(PATENTE)
+             WHERE mediciones.patente='%s';"""%(PATENTE)
     print SQL3
     SQL4=""" DELETE FROM autos
              WHERE autos.patente='%s' RETURNING *;"""%(PATENTE)
     print SQL4
     SQL5=""" DELETE FROM debe
-             WHERE debe.rut='%s'; RETURNING *"""%(RUT)
+             WHERE debe.rut='%s' RETURNING *;"""%(RUT)
     print SQL5
     SQL6=""" DELETE FROM clientes
-             WHERE clientes.rut='%s'; RETURNING *"""%(RUT)
+             WHERE clientes.rut='%s' RETURNING *;"""%(RUT)
     print SQL6
     if PATENTE:
         #try:
-        if cur.execute(SQL2) is not None:
-            DATA_BORRADO_INVOLUCRADOS=cur.fetchall()
-            print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
+        print cur.execute(SQL2)
+        DATA_BORRADO_INVOLUCRADOS=cur.fetchall()
+        #print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
         print cur.execute(SQL3)
         DATA_BORRADO_MEDICIONES=cur.fetchall()
-        print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
+        #print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
         print cur.execute(SQL4)
         DATA_BORRADO_AUTO=cur.fetchall()
-        print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
+        #print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
         print cur.execute(SQL5)
         DATA_BORRADO_DEBE=cur.fetchall()
-        print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
+        #print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
         print cur.execute(SQL6)
         DATA_BORRADO_CLIENTES=cur.fetchall()
-        print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
+        #print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
         #except:
          #   print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
     else:
