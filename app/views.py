@@ -23,9 +23,15 @@ def index():
 	cur.execute(sql)
 	cantidad_clientes  = cur.fetchall()
 	conn.commit()
+
+	sql = """SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud FROM mediciones where mediciones.patente=%s GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente ORDER BY  mediciones.fecha, mediciones.hora;"""%(patentegps)
+	cur.execute(sql)
+	granchoque = cur.fetchall()
+	conn.commit()
+
 	
 
-	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
+	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes,granchoque=granchoque)
 
 
 @app.route('/ELIMINAR',methods=['GET', 'POST'])
