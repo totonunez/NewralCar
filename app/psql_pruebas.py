@@ -1,37 +1,36 @@
 from configuraciones import *
 import psycopg2
-conn=psycopg2.connect("dbname=%s user=%s password=%s"%(databse, user, passwd))
+conn=psycopg2.connect("dbname=%s user=%s password=%s"%(database, user, passwd))
 cur=conn.cursor()
 import time
 
 
-RUT='19233498','10233198'
+RUT='19233498','10233198','14081177'
 
 def ELIMINAR_CLIENTE(RUT):
+    RUT=str(RUT)
     SQL=""" SELECT patente
             FROM autos 
-            WHERE autos.rut='%s';"""(RUT)
+            WHERE autos.rut='%s';"""%(RUT)
     print SQL
-    SQL2=""" DELETE FROM involucrados
-             WHERE involucrados.patente='%s';"""(PATENTE)
-    print SQL2
-    SQL3=""" DELETE FROM mediciones
-             WHERE mediciones.patente='%s';"""(PATENTE)
-    print SQL3
-    SQL4=""" DELETE FROM autos
-             WHERE autos.patente='%s';"""(PATENTE)
-    print SQL4
-    SQL5=""" DELETE FROM debe
-             WHERE debe.rut='%s';"""(RUT)
-    print SQL5
-    SQL6=""" DELETE FROM clientes
-             WHERE clientes.rut='%s';"""(RUT)
-    print SQL6
-
     cur.execute(SQL)
     PATENTE=cur.fetchall()
     print 'SE ELIMINARAN LOS ELEMENTOS DE LA PATENTE: ', PATENTE 
-
+    SQL2=""" DELETE FROM involucrados
+             WHERE involucrados.patente='%s';"""%(PATENTE)
+    print SQL2
+    SQL3=""" DELETE FROM mediciones
+             WHERE mediciones.patente='%s';"""%(PATENTE)
+    print SQL3
+    SQL4=""" DELETE FROM autos
+             WHERE autos.patente='%s';"""%(PATENTE)
+    print SQL4
+    SQL5=""" DELETE FROM debe
+             WHERE debe.rut='%s';"""%(RUT)
+    print SQL5
+    SQL6=""" DELETE FROM clientes
+             WHERE clientes.rut='%s';"""%(RUT)
+    print SQL6
     if PATENTE:
         try:
             cur.execute(SQL2)
@@ -52,18 +51,22 @@ def ELIMINAR_CLIENTE(RUT):
         except:
             print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
     else:
+<<<<<<< HEAD
+        print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA' 
+
+=======
         print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA'
     
-
+>>>>>>> 6d3e8b7ddf7b519c8e9b980bbe3f6729e0eac053
 def ELIMINAR_AUTO(PATENTE):
     SQL2=""" DELETE FROM involucrados
-             WHERE involucrados.patente='%s';"""(PATENTE)
+             WHERE involucrados.patente='%s';"""%(PATENTE)
     print SQL2
     SQL3=""" DELETE FROM mediciones
-             WHERE mediciones.patente='%s';"""(PATENTE)
+             WHERE mediciones.patente='%s';"""%(PATENTE)
     print SQL3
     SQL4=""" DELETE FROM autos
-             WHERE autos.patente='%s';"""(PATENTE)
+             WHERE autos.patente='%s';"""%(PATENTE)
     print SQL4
     try:
         cur.execute(SQL2)
@@ -80,7 +83,7 @@ def ELIMINAR_AUTO(PATENTE):
 
 def ELIMINAR_MULTA(RUT):
     SQL5=""" DELETE FROM debe
-             WHERE debe.rut='%s';"""(RUT)
+             WHERE debe.rut='%s';"""%(RUT)
     print SQL5
     try:
         cur.execute(SQL5)
@@ -124,7 +127,7 @@ def ACTUALIZAR_FECHA_DEBE(RUT, FECHA_NUEVA, ID_MULTA):
             SET fecha_vencimiento='%s'
             WHERE debe.rut='%s'
             AND debe.id_penalizacion=%s;"""%(FECHA_NUEVA, RUT,ID_MULTA)
-	print SQL2
+    print SQL2
     cur.execute(SQL)
     DATA_CLIENTE_MULTA=cur.fetchall()
     print DATA_CLIENTE_MULTA
@@ -146,7 +149,7 @@ def ACTUALIZAR_TELEFONO(RUT, TELEFONO):
     print SQL
     SQL2="""UPDATE clientes
             SET telefono='%s'
-            WHERE clientes.rut='%s';"""(TELEFONO,RUT)
+            WHERE clientes.rut='%s';"""%(TELEFONO,RUT)
     print SQL2
     cur.execute(SQL)
     DATA_TELEFONO_CLIENTE=cur.fetchall()
