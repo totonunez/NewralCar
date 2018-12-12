@@ -14,7 +14,7 @@ def ELIMINAR_CLIENTE(RUT):
             WHERE autos.rut='%s';"""%(RUT)
     print SQL
     cur.execute(SQL)
-    PATENTE=cur.fetchall()
+    PATENTE=cur.fetchone()
     print 'SE ELIMINARAN LOS ELEMENTOS DE LA PATENTE: ', PATENTE 
     SQL2=""" DELETE FROM involucrados
              WHERE involucrados.patente='%s';"""%(PATENTE)
@@ -32,32 +32,28 @@ def ELIMINAR_CLIENTE(RUT):
              WHERE clientes.rut='%s';"""%(RUT)
     print SQL6
     if PATENTE:
-        try:
-            cur.execute(SQL2)
-            DATA_BORRADO_INVOLUCRADOS=cur.fetchall()
-            print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
-            cur.execute(SQL3)
-            DATA_BORRADO_MEDICIONES=cur.fetchall()
-            print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
-            cur.execute(SQL4)
-            DATA_BORRADO_AUTO=cur.fetchall()
-            print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
-            cur.execute(SQL5)
-            DATA_BORRADO_DEBE=cur.fetchall()
-            print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
-            cur.execute(SQL6)
-            DATA_BORRADO_CLIENTES=cur.fetchall()
-            print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
-        except:
-            print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
+        #try:
+        cur.execute(SQL2)
+        DATA_BORRADO_INVOLUCRADOS=cur.fetchall()
+        print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
+        cur.execute(SQL3)
+        DATA_BORRADO_MEDICIONES=cur.fetchall()
+        print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
+        cur.execute(SQL4)
+        DATA_BORRADO_AUTO=cur.fetchall()
+        print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
+        cur.execute(SQL5)
+        DATA_BORRADO_DEBE=cur.fetchall()
+        print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
+        cur.execute(SQL6)
+        DATA_BORRADO_CLIENTES=cur.fetchall()
+        print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
+        #except:
+         #   print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
     else:
-<<<<<<< HEAD
+
         print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA' 
 
-=======
-        print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA'
-    
->>>>>>> 6d3e8b7ddf7b519c8e9b980bbe3f6729e0eac053
 def ELIMINAR_AUTO(PATENTE):
     SQL2=""" DELETE FROM involucrados
              WHERE involucrados.patente='%s';"""%(PATENTE)
