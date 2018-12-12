@@ -12,23 +12,38 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    INGRESE LOS DATOS DE LA PATENTE Y EL ID DEL SENSOR
+                    INGRESE LOS DATOS DE LA PATENTE, LA FECHA Y EL SENSOR
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <p style="color:#ff0000;">PRECAUCION: SI EL DUEÑO NO EXISTE EN EL SISTEMA, USTED DEBERA CREARLO</p>
-                              <br>
-                              <form action="/ACTUALIZAR_DUENO", method="post">
+                            <p style="color:#ff0000;">INGRESE SUS VALORES CON CUIDADO</p>
+                            <br>
+                            <form action="/REVISAR_MEDICIONES", method="post">
                                 PATENTE:<br>
                                 <input type="text" name="PATENTE">
                                     <br>
-                              RUT:<br>
-                              <input type="text" name="RUT">
+                                FECHA:<br>
+                                <input type="text" name="FECHA">
                                   <br>
+                                  ID DE MULTA:<br>
+                                        <select name="IDSENSOR">
+                                            <option idsensor="1">SENSOR DE PRESION DE CILINDRO </option>
+                                            <option idsensor="2">SENSOR DE TEMPERATURA RADIADOR</option>
+                                            <option idsensor="3">SENSOR DE TEMPERATURA CILINDROS</option>
+                                            <option idsensor="4">SENSOR DE TEMPERATURA INTERIOR</option>
+                                            <option idsensor="5">SENSOR PRESION AIRE</option>
+                                            <option idsensor="6">SENSOR VOLTAJE BATERIA</option>
+                                            <option idsensor="7">SENSOR VELOCIDAD</option>
+                                            <option idsensor="8">SENSOR ACELERACION</option>
+                                            <option idsensor="9">GPS LONGITUD</option>
+                                            <option idsensor="10">GPS LATITUD</option>
+                                        </select>
+                                      <br>
+                                
                                   <br>
-                              <input type="submit" value="ACTUALIZAR">
-                              </form> 
+                                <input type="submit" value="BUSCAR">
+                            </form> 
 
                         </div>
                         <!-- /.col-lg-6 (nested) -->
