@@ -209,7 +209,7 @@ def crearauto():
 		pasajeros = request.form['MAXIMO_PASAJEROS']
 		aro = request.form['NUM_ARO']
 		try:
-			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
+			sql = """insert into autos values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("crear_ok.html", nombre="nombre")
