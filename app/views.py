@@ -56,9 +56,10 @@ def borrarauto():
 		try:
 			print(sql)
 			print(cur.execute(sql))
-			
+			conn.commit()
 			print(cur.execute(sql2))
 			print(sql2)
+			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
 		except:
 			print("error")
@@ -79,12 +80,14 @@ def borrarcliente():
 		try:
 			print("sql lo intenta")
 			x=cur.execute(sql)
+			conn.commit()
 			print(x)
 			if x is None:
 				print("sql falla")
 				return render_template("eliminar_error.html",nombre="nombre")
 			
 			print(cur.execute(sql2))
+			conn.commit()
 			return render_template("eliminacion_ok.html",nombre="nombre")
 		except:
 			return render_template("eliminar_error.html",nombre="nombre")
@@ -124,6 +127,7 @@ def actualizardueno():
 			sql2="""update autos set rut='%s' where autos.patente = '%s';"""%(rutdueno, patente2)
 			print sql , '\n' , sql2
 			cur.execute(sql)
+			conn.commit()
 			data=cur.fetchall()
 			if data:
 				print data
@@ -131,6 +135,7 @@ def actualizardueno():
 				try:
 					
 					cur.execute(sql2)
+					conn.commit()
 					data=cur.fetchall()
 					print data
 					return render_template("actualizar_exito.html",nombre="nombre")
@@ -154,6 +159,7 @@ def actualizardebe():
 		try:
 			print 'intentado subir'
 			print cur.execute(sql)
+			conn.commit()
 			data= cur.fetchall()
 			print data
 			print cur.execute(sql2)
@@ -175,9 +181,11 @@ def actualizartelefono():
 		try:
 			print 'intentando subir'
 			print cur.execute(sql)
+			conn.commit()
 			data= cur.fetchall()
 			print data
 			print cur.execute(sql2)
+			conn.commit()
 			data= cur.fetchall()
 			print data
 			return render_template("actualizar_exito.html",nombre="nombre")
