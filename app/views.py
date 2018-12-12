@@ -99,7 +99,8 @@ def borrarcliente():
 def eliminardebe():
 	if request.method == 'POST':
 		iddebe = request.form['ID']
-		sql= """delete from debe where debe.id_penalizacion ='%s'"""%(iddebe)
+		rutdebe = request.form['RUT']
+		sql= """delete from debe where debe.id_penalizacion ='%s' AND debe.rut='%s'"""%(iddebe,rutdebe)
 		print sql,'\n'
 		try:
 			
