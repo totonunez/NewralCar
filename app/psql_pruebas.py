@@ -6,7 +6,6 @@ import time
 
 
 RUT='19233498','10233198','14081177'
-18031288 ->7
 def ELIMINAR_CLIENTE(RUT):
     RUT=str(RUT)
     SQL=""" SELECT patente
