@@ -54,10 +54,10 @@ def borrar():
 def borrarauto():
 	if request.method == 'POST':
 		patente =  request.form['PATENTE']
-        if P.ELIMINAR_AUTO(patente):
-            return render_template("eliminacion_ok.html")
-        else:
-            return render_template("eliminar_error.html")			
+        	if P.ELIMINAR_AUTO(patente):
+            		return render_template("eliminacion_ok.html")
+        	else:
+            		return render_template("eliminar_error.html")			
 	else:
 		return render_template("eliminar_auto.html")
 
@@ -67,11 +67,11 @@ def borrarauto():
 def borrarcliente():
 	if request.method == 'POST':
 		rutcliente = request.form['RUT']
-        status=P.ELIMINAR_CLIENTE(rutcliente)
-        if status:
-            return render_template("eliminacion_ok.html")
-        else:
-            return render_template("eliminar_error.html")
+        	status=P.ELIMINAR_CLIENTE(rutcliente)
+        	if status:
+            		return render_template("eliminacion_ok.html")
+        	else:
+            		return render_template("eliminar_error.html")
 	else:
 		return render_template("eliminar_cliente.html")
 
@@ -81,10 +81,10 @@ def eliminardebe():
 	if request.method == 'POST':
 		iddebe = request.form['ID']
 		rutdebe = request.form['RUT']
-        if P.ELIMINAR_MULTA(rutdebe, iddebe):
-            return render_template("eliminacion_ok.html")
-        else:
-            return render_template("eliminar_error.html")
+        	if P.ELIMINAR_MULTA(rutdebe, iddebe):
+            		return render_template("eliminacion_ok.html")
+        	else:
+            		return render_template("eliminar_error.html")
 	else:
 		return render_template("eliminar_multa.html")
 
@@ -96,17 +96,16 @@ def actualizar():
 @app.route('/ACTUALIZAR_DUENO',methods=['GET','POST'])
 def actualizardueno():
 	if request.method == 'POST':
-		try:
-			rutdueno = request.form['RUT']
-			patente2 = request.form['PATENTE']
-            status=P.ACTUALIZAR_DUENO(rutdueno,patente2)
-            if status:
-                return render_template("actualizar_exito.html")
-            else:
-                if status is None:
-                    return render_template("actualizar_error.html")
-                else:
-                    return render_template("error_actualizar_dueno.html")
+		rutdueno = request.form['RUT']
+		patente2 = request.form['PATENTE']
+            	status=P.ACTUALIZAR_DUENO(rutdueno,patente2)
+            	if status:
+                	return render_template("actualizar_exito.html")
+            	else:
+                	if status is None:
+                    		return render_template("actualizar_error.html")
+                	else:
+                    		return render_template("error_actualizar_dueno.html")
 	else:
 		return render_template("actualizar_dueno.html")
 
@@ -117,10 +116,10 @@ def actualizardebe():
 		ruta = request.form['RUT']
 		fecha = request.form['FECHA_NUEVA']
 		id = request.form['IDMULTA']
-        if P.ACTUALIZAR_FECHA_DEBE(ruta,fecha,id):
-            return render_template("actualizar_exito.html")
-        else:
-            return render_template("actualizar_error.html")
+        	if P.ACTUALIZAR_FECHA_DEBE(ruta,fecha,id):
+            		return render_template("actualizar_exito.html")
+        	else:
+            		return render_template("actualizar_error.html")
 	else:
 		return render_template("actualizar_fecha_debe.html")	
 
@@ -129,10 +128,10 @@ def actualizartelefono():
 	if request.method == 'POST':
 		ruttel = request.form['RUT']
 		telefono = request.form['TELEFONO']
-        if P.ACTUALIZAR_TELEFONO(ruttel, telefono):
-            return render_template("actualizar_exito.html")
-        else:
-            return render_template("actualizar_error.html")
+        	if P.ACTUALIZAR_TELEFONO(ruttel, telefono):
+            		return render_template("actualizar_exito.html")
+        	else:
+            		return render_template("actualizar_error.html")
 	else:
 		return render_template("actulizar_telefono_dueno.html")	
 
@@ -151,10 +150,10 @@ def crearauto():
 		tipo_auto = request.form['TIPO_AUTO']
 		pasajeros = request.form['MAXIMO_PASAJEROS']
 		aro = request.form['NUM_ARO']
-        if P.INGRESAR_AUTO_NUEVO(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro):
-            return render_template("crear_ok.html", nombre="nombre")
-        else:
-            return render_template("crear_error.html")
+        	if P.INGRESAR_AUTO_NUEVO(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro):
+            		return render_template("crear_ok.html", nombre="nombre")
+        	else:
+            		return render_template("crear_error.html")
 	else:
 		return render_template("crear_auto.html")
 
@@ -168,10 +167,10 @@ def crearcliente():
 		email = request.form['EMAIL']
 		telefonod = request.form['TELEFONO']
 		url = request.form['URL']
-        if P.INGRESAR_CLIENTE_NUEVO(rutd,digito,nombred,apellidod,email,telefonod,url):
-            return render_template("crear_exito.html", nombre="nombre")
-        else:
-            return render_template("crear_error.html")
+        	if P.INGRESAR_CLIENTE_NUEVO(rutd,digito,nombred,apellidod,email,telefonod,url):
+            		return render_template("crear_exito.html", nombre="nombre")
+        	else:
+            		return render_template("crear_error.html")
 	else:
 		return render_template("crear_cliente.html")
 
