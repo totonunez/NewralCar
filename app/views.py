@@ -274,7 +274,7 @@ def revisarmayorchoque():
 	
 	return render_template("revisar_choquemayor.html",granchoque = granchoque)
 
-@app.route('/REVISAR_UICACIONESGPS',methods=['GET','POST'])
+@app.route('/REVISAR_UBICACIONESGPS',methods=['GET','POST'])
 def revisarubicacionesgps():
 	if request.method == 'POST':
 		patentegps = request.form['PATENTE']
