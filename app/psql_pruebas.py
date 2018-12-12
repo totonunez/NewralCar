@@ -6,7 +6,7 @@ import time
 
 
 RUT='19233498','10233198','14081177'
-
+18031288 ->7
 def ELIMINAR_CLIENTE(RUT):
     RUT=str(RUT)
     SQL=""" SELECT patente
@@ -180,8 +180,7 @@ def ACTUALIZAR_TELEFONO(RUT, TELEFONO):
 
 def INGRESAR_AUTO_NUEVO(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBUSTIBLE, TIPO_AUTO, MAXIMO_PASAJEROS, NUM_ARO):
     SQL=""" INSERT INTO autos
-            (patente, rut, largo, ancho, altos, peso_neto, tipo_combustible, tipo_auto, maximo_pasajeros, num_aro)
-            VALUES ('%s', '%s', %s, %s, %s, %s, %s, '%s', '%s',%s, %s);"""%(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBUSTIBLE, TIPO_AUTO, MAXIMO_PASAJEROS, NUM_ARO)
+            VALUES ('%s', '%s',' %s', '%s', '%s', '%s', '%s', '%s', '%s','%s');"""%(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBUSTIBLE, TIPO_AUTO, MAXIMO_PASAJEROS, NUM_ARO)
     print  SQL
     try:
         cur.execute(SQL)
@@ -199,8 +198,7 @@ def INGRESAR_AUTO_NUEVO(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBU
         print 'ERROR EN EL INGRESO DE UN AUTO NUEVO'
 
 def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
-    SQL="""INSERT INTO clientes
-           (rut, digito, nombre, apellido , email, telefono, url) 
+    SQL="""INSERT INTO clientes 
            VALUES '%s','%s','%s','%s','%s','%s','%s';"""%(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL)
     print SQL
     try:
