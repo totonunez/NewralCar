@@ -183,31 +183,33 @@ def INGRESAR_AUTO_NUEVO(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBU
     print  SQL
     try:
         cur.execute(SQL)
-        DATA_AUTO_NUEVO=cur.fetchall()
+        #DATA_AUTO_NUEVO=cur.fetchall()
         conn.commit()
-        print 'SE INGRESO CORRECTAMENTE EL AUTO NUEVO', DATA_AUTO_NUEVO
+        #print 'SE INGRESO CORRECTAMENTE EL AUTO NUEVO', DATA_AUTO_NUEVO
         SQL_PRUEBA="""SELECT *
                       FROM autos
                       WHERE autos.patente='%s';"""%(PATENTE)
+        print SQL_PRUEBA
         cur.execute(SQL_PRUEBA)
         DATA_COMPROBACION_AUTO_NUEVO=cur.fetchall()
         conn.commit()
         print 'COMPROBACION DE ENTRADA: ', DATA_COMPROBACION_AUTO_NUEVO
     except:
-        print 'ERROR EN EL INGRESO DE UN AUTO NUEVO'
+        print 'ERROR EN EL INGRESO DE UN AUTO NUEVO, DEBE INGRESAR UN RUT QUE EXISTE EN CLIENTES'
 
 def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
     SQL="""INSERT INTO clientes 
-           VALUES '%s','%s','%s','%s','%s','%s','%s';"""%(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL)
+           VALUES ('%s','%s','%s','%s','%s','%s','%s');"""%(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL)
     print SQL
     try:
         cur.execute(SQL)
-        DATA_CLIENTE_NUEVO=cur.fetchall()
+        #DATA_CLIENTE_NUEVO=cur.fetchall()
         conn.commit()
-        print 'SE INGRESO UN CLIENTE NUEVO', DATA_CLIENTE_NUEVO
+        #print 'SE INGRESO UN CLIENTE NUEVO', DATA_CLIENTE_NUEVO
         SQL_PRUEBA="""SELECT * 
                       FROM clientes
                       WHERE clientes.rut='%s';"""%(RUT)
+        print SQL_PRUEBA
         cur.execute(SQL_PRUEBA)
         DATA_COMPROBACION_CLIENTE_NUEVO=cur.fetchall()
         conn.commit()
