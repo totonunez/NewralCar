@@ -11,31 +11,31 @@ cur = conn.cursor()
 def index():
 	try:
 		sql ="""
-	select count(*) from autos;
-	"""
-	print sql 
-	cur.execute(sql)
-	cantidad_auto  = cur.fetchall()
-	conn.commit()
+		select count(*) from autos;
+		"""
+		print sql 
+		cur.execute(sql)
+		cantidad_auto  = cur.fetchall()
+		conn.commit()
 
-	sql ="""
-	select count(*) from clientes;
-	"""
-	print sql 
-	cur.execute(sql)
-	cantidad_clientes  = cur.fetchall()
-	conn.commit()
+		sql ="""
+		select count(*) from clientes;
+		"""
+		print sql 
+		cur.execute(sql)
+		cantidad_clientes  = cur.fetchall()
+		conn.commit()
 
-	sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora 
-	from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk 
-	where kk.cantidad  = (select max(cosas) 
-							from (select count(*) as cosas 
-									from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
+		sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora 
+		from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk 
+		where kk.cantidad  = (select max(cosas) 
+								from (select count(*) as cosas 
+										from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
 
-	print sql
-	cur.execute(sql)
-	granchoque = cur.fetchall()
-	conn.commit()
+		print sql
+		cur.execute(sql)
+		granchoque = cur.fetchall()
+		conn.commit()
 	except expression as identifier:
 		pass
 	
