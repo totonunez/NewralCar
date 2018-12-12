@@ -4,8 +4,6 @@ conn=psycopg2.connect("dbname=%s user=%s password=%s"%(database, user, passwd))
 cur=conn.cursor()
 import time
 
-
-RUT='19233498','10233198','14081177'
 def ELIMINAR_CLIENTE(RUT):
     RUT=str(RUT)
     SQL=""" SELECT patente
@@ -53,11 +51,13 @@ def ELIMINAR_CLIENTE(RUT):
             DATA_BORRADO_CLIENTES=cur.fetchall()
             conn.commit()
             print 'CANTIDAD DE CLIENTES ELIMINADOS: ', DATA_BORRADO_CLIENTES
+            return True
         except:
             print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
+            return False
     else:
-
         print 'ERROR CLIENTE NO TIENE PATENTE ASIGNADA' 
+        return False
 
 def ELIMINAR_AUTO(PATENTE):
     SQL2=""" DELETE FROM involucrados
@@ -81,9 +81,11 @@ def ELIMINAR_AUTO(PATENTE):
         cur.execute(SQL4)
         conn.commit()
         DATA_BORRADO_AUTO=cur.fetchall()
-        print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO 
+        print 'CANTIDAD DE AUTOS ELIMINADOS: ', DATA_BORRADO_AUTO
+        return True
     except:
         print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
+        return False
 
 def ELIMINAR_MULTA(RUT, ID):
     SQL5=""" DELETE FROM debe
@@ -96,8 +98,10 @@ def ELIMINAR_MULTA(RUT, ID):
         DATA_BORRADO_DEBE=cur.fetchall()
         conn.commit()
         print 'CANTIDAD DE MULTAS ELIMINADAS: ', DATA_BORRADO_DEBE
+        return True
     except:
         print 'ERROR EN BORRADO DE MULTAS, RUT INCORRECTO'
+        return False
 
 def ACTUALIZAR_DUENO(RUT, PATENTE):
     SQL=""" SELECT * 
@@ -120,10 +124,13 @@ def ACTUALIZAR_DUENO(RUT, PATENTE):
             #DATA_ACTUALIZACION_DE_DUENO_AUTO=cur.fetchall()
             conn.commit()
             print 'SE ACTUALIZAN CORRECTAMENTE LOS ELEMENTOS'#,DATA_ACTUALIZACION_DE_DUENO_AUTO
+            return True
         except:
             print 'ERROR EN EL INTENTO DE ACTUALIZAR, POSIBLEMENTE EL RUT NUEVO NO EXISTE EN EL SISTEMA'
+            return False
     else:
         print 'NO EXISTE AUTO CON TAL PATENTE'
+        return None
 
 def ACTUALIZAR_FECHA_DEBE(RUT, FECHA_NUEVA, ID_MULTA):
     SQL=""" SELECT *
@@ -147,10 +154,13 @@ def ACTUALIZAR_FECHA_DEBE(RUT, FECHA_NUEVA, ID_MULTA):
             #DATA_MULTA_UPDATE=cur.fetchall()
             conn.commit()
             print 'SE ACTUALIZAN LA SIGUIENTE CANTIDAD DE ELEMENTOS: '#,DATA_MULTA_UPDATE
+            return True
         except:
             print 'ERROR EN EL INTENTO DE ACTUALIZAR FECHAS DE MULTAS'
+            return False
     else:
         print 'EL RUT INDICADO NO POSEE MULTA DE ID_MULTA ESPECIFICADO'
+        return False
 
 def ACTUALIZAR_TELEFONO(RUT, TELEFONO):
     SQL=""" SELECT *
@@ -172,10 +182,13 @@ def ACTUALIZAR_TELEFONO(RUT, TELEFONO):
             #DATA_TELEFONO_UPDATE=cur.fetchall()
             conn.commit()
             print 'SE ACTUALIZAR LA SIGUIENTE CANTIDAD DE TELEFONOS: '#, DATA_TELEFONO_UPDATE
+            return True
         except:
             print 'ERROR EN EL INTENTO DE ACTUALIZAR EL TELEFONO'
+            return False
     else:
         print 'ERROR EL CLIENTE NO EXISTE O FUE MAL ESCRITO EL RUT'
+        return False
 
 def INGRESAR_AUTO_NUEVO(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBUSTIBLE, TIPO_AUTO, MAXIMO_PASAJEROS, NUM_ARO):
     SQL=""" INSERT INTO autos
@@ -194,8 +207,10 @@ def INGRESAR_AUTO_NUEVO(PATENTE, RUT, LARGO , ANCHO, ALTO, PESO_NETO, TIPO_COMBU
         DATA_COMPROBACION_AUTO_NUEVO=cur.fetchall()
         conn.commit()
         print 'COMPROBACION DE ENTRADA: ', DATA_COMPROBACION_AUTO_NUEVO
+        return True
     except:
         print 'ERROR EN EL INGRESO DE UN AUTO NUEVO, DEBE INGRESAR UN RUT QUE EXISTE EN CLIENTES'
+        return False
 
 def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
     SQL="""INSERT INTO clientes 
@@ -214,5 +229,7 @@ def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
         DATA_COMPROBACION_CLIENTE_NUEVO=cur.fetchall()
         conn.commit()
         print 'COMPROBACION DE ENTRADA: ', DATA_COMPROBACION_CLIENTE_NUEVO
+        return True
     except:
         print 'ERROR EN EL INGRESO DE UN CLIENTE NUEVO'
+        return False
