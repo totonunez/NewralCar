@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template,request,redirect
 from configuraciones import *
-
+import psql_pruebas as P
 import psycopg2
 conn = psycopg2.connect("dbname=%s user=%s password=%s"%(database,user,passwd))
 cur = conn.cursor()
@@ -54,20 +54,10 @@ def borrar():
 def borrarauto():
 	if request.method == 'POST':
 		patente =  request.form['PATENTE']
-		sql= """delete from mediciones where mediciones.patente='%s';"""%(patente)
-		sql2= """delete from autos where autos.patente ='%s';""" %(patente)
-		print sql, ' \n' , slq2
-		try:
-			print(sql)
-			print(cur.execute(sql))
-			conn.commit()
-			print(cur.execute(sql2))
-			print(sql2)
-			conn.commit()
-			return render_template("eliminacion_ok.html")
-		except:
-			print("error")
-			return render_template("eliminar_error.html")
+        if P.ELIMINAR_AUTO(patente):
+            return render_template("eliminacion_ok.html")
+        else:
+            return render_template("eliminar_error.html")			
 	else:
 		return render_template("eliminar_auto.html")
 
@@ -77,24 +67,11 @@ def borrarauto():
 def borrarcliente():
 	if request.method == 'POST':
 		rutcliente = request.form['RUT']
-		print("se procede a eliminar el cliente",rutcliente)
-		sql= """ delete from clientes where clientes.rut = '%s'"""%(rutcliente)
-		sql2= """ delete from autos where autos.rut = '%s'"""%(rutcliente)
-		print sql, '\n', sql2
-		try:
-			print("sql lo intenta")
-			x=cur.execute(sql)
-			conn.commit()
-			print(x)
-			if x is None:
-				print("sql falla")
-				return render_template("eliminar_error.html")
-			
-			print(cur.execute(sql2))
-			conn.commit()
-			return render_template("eliminacion_ok.html")
-		except:
-			return render_template("eliminar_error.html")
+        status=P.ELIMINAR_CLIENTE(rutcliente)
+        if status:
+            return render_template("eliminacion_ok.html")
+        else:
+            return render_template("eliminar_error.html")
 	else:
 		return render_template("eliminar_cliente.html")
 
@@ -104,15 +81,10 @@ def eliminardebe():
 	if request.method == 'POST':
 		iddebe = request.form['ID']
 		rutdebe = request.form['RUT']
-		sql= """delete from debe where debe.id_penalizacion ='%s' AND debe.rut='%s'"""%(iddebe,rutdebe)
-		print sql,'\n'
-		try:
-			
-			cur.execute(sql)
-			conn.commit
-			return render_template("eliminacion_ok.html")
-		except:
-			return render_template("eliminar_error.html")
+        if P.ELIMINAR_MULTA(rutdebe, iddebe):
+            return render_template("eliminacion_ok.html")
+        else:
+            return render_template("eliminar_error.html")
 	else:
 		return render_template("eliminar_multa.html")
 
@@ -125,29 +97,16 @@ def actualizar():
 def actualizardueno():
 	if request.method == 'POST':
 		try:
-			print 'intentado borrar la wea'
 			rutdueno = request.form['RUT']
 			patente2 = request.form['PATENTE']
-			sql= """select * from autos where autos.patente = '%s' for update;"""%(patente2)
-			sql2="""update autos set rut='%s' where autos.patente = '%s';"""%(rutdueno, patente2)
-			print sql , '\n' , sql2
-			cur.execute(sql)
-			conn.commit()
-			data=cur.fetchall()
-			if data:
-				print data
-				print 'intentando denuevo ctm'
-				try:
-					
-					cur.execute(sql2)
-					conn.commit()
-					data=cur.fetchall()
-					print data
-					return render_template("actualizar_exito.html")
-				except:		
-					return render_template("error_actualizar_dueno.html")
-		except:
-			return render_template("actualizar_error.html")
+            status=P.ACTUALIZAR_DUENO(rutdueno,patente2)
+            if status:
+                return render_template("actualizar_exito.html")
+            else:
+                if status is None:
+                    return render_template("actualizar_error.html")
+                else:
+                    return render_template("error_actualizar_dueno.html")
 	else:
 		return render_template("actualizar_dueno.html")
 
@@ -158,20 +117,10 @@ def actualizardebe():
 		ruta = request.form['RUT']
 		fecha = request.form['FECHA_NUEVA']
 		id = request.form['IDMULTA']
-		sql= """select * from debe where debe.rut='%s' and debe.id_penalizacion=%s for update;"""%(ruta, id)
-		sql2="""update debe set fecha_vencimiento='%s' where debe.rut='%s' and debe.id_penalizacion=%s;"""%(fecha,ruta, id)
-		print sql, '\n' ,sql2
-		try:
-			print 'intentado subir'
-			print cur.execute(sql)
-			conn.commit()
-			data= cur.fetchall()
-			print data
-			print cur.execute(sql2)
-			conn.commit()
-			return render_template("actualizar_exito.html")
-		except:
-			return render_template("actualizar_error.html")
+        if P.ACTUALIZAR_FECHA_DEBE(ruta,fecha,id):
+            return render_template("actualizar_exito.html")
+        else:
+            return render_template("actualizar_error.html")
 	else:
 		return render_template("actualizar_fecha_debe.html")	
 
@@ -180,22 +129,10 @@ def actualizartelefono():
 	if request.method == 'POST':
 		ruttel = request.form['RUT']
 		telefono = request.form['TELEFONO']
-		sql= """select * from clientes where clientes.rut = '%s' for update;"""%(ruttel)
-		sql2= """update clientes set telefono='%s' where clientes.rut = '%s';"""%(telefono, ruttel)
-		print sql, '\n', sql2
-		try:
-			print 'intentando subir'
-			print cur.execute(sql)
-			conn.commit()
-			data= cur.fetchall()
-			print data
-			print cur.execute(sql2)
-			conn.commit()
-			data= cur.fetchall()
-			print data
-			return render_template("actualizar_exito.html")
-		except:
-			return render_template("actualizar_error.html")
+        if P.ACTUALIZAR_TELEFONO(ruttel, telefono):
+            return render_template("actualizar_exito.html")
+        else:
+            return render_template("actualizar_error.html")
 	else:
 		return render_template("actulizar_telefono_dueno.html")	
 
@@ -214,13 +151,10 @@ def crearauto():
 		tipo_auto = request.form['TIPO_AUTO']
 		pasajeros = request.form['MAXIMO_PASAJEROS']
 		aro = request.form['NUM_ARO']
-		try:
-			sql = """insert into autos values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
-			cur.execute(sql)
-			conn.commit()
-			return render_template("crear_ok.html", nombre="nombre")
-		except:
-			return render_template("crear_error.html")
+        if P.INGRESAR_AUTO_NUEVO(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro):
+            return render_template("crear_ok.html", nombre="nombre")
+        else:
+            return render_template("crear_error.html")
 	else:
 		return render_template("crear_auto.html")
 
@@ -234,13 +168,10 @@ def crearcliente():
 		email = request.form['EMAIL']
 		telefonod = request.form['TELEFONO']
 		url = request.form['URL']
-		try:
-			sql = """insert into clientes values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
-			cur.execute(sql)
-			conn.commit()
-			return render_template("crear_exito.html", nombre="nombre")
-		except:
-			return render_template("crear_error.html")
+        if P.INGRESAR_CLIENTE_NUEVO(rutd,digito,nombred,apellidod,email,telefonod,url):
+            return render_template("crear_exito.html", nombre="nombre")
+        else:
+            return render_template("crear_error.html")
 	else:
 		return render_template("crear_cliente.html")
 
@@ -262,6 +193,17 @@ def revisarfaltas():
 	else:
 		return render_template("revisar_faltas.html")
 
+@app.route('/REVISAR_GPS',methods=['GET','POST'])
+def GPS():
+    if request.method=='POST':
+        patente = request.form['PATENTE']
+        clave=request.form['PASS']
+        if clave is 'HOLAMUNDO':
+            pass
+        else:
+            pass # error de credencial
+    else:
+        pass
 
 
 @app.route('/REVISAR_MEDICIONES',methods=['GET','POST'])
