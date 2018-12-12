@@ -178,23 +178,6 @@ def actualizartelefono():
 def crear():
 	return render_template('crear_inicio.html')
 
-@app.route('/CREAR_MEDICION',methods=['GET','POST'])
-def crearsensor():
-	if request.method == 'POST':
-		idsensor = resquest.form['ID_SENSOR']
-		patentese = request.form['PATENTE']
-		hora = request.form['HORA']
-		fecha = request.form['TIPO_UNIDAD']
-		try:
-			sql= """insert into sensores values(%s, %s, %s, %s) """%(idsensor, nombresensor, presicion, unidad)
-			cur.execute(sql)
-			conn.commit()
-			return render_template("crear_ok.html",nombre="nombre")
-		except:
-			return render_template("crear_error.html",nombre="nombre")
-	else:
-		return render_template("crear_sensor.html",nombre="nombre")
-
 @app.route('/CREAR_AUTO',methods=['GET','POST'])
 def crearauto():
 	if request.method == 'POST':
