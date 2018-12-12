@@ -15,6 +15,7 @@ def index():
 	print sql 
 	cur.execute(sql)
 	cantidad_auto  = cur.fetchall()
+	conn.commit()
 
 	sql ="""
 	select count(*) from clientes;
