@@ -33,9 +33,9 @@ def ELIMINAR_CLIENTE(RUT):
     print SQL6
     if PATENTE:
         #try:
-        print cur.execute(SQL2)
-        DATA_BORRADO_INVOLUCRADOS=cur.fetchone()
-        print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
+        if cur.execute(SQL2) is not None:
+            DATA_BORRADO_INVOLUCRADOS=cur.fetchone()
+            print 'CANTIDAD DE ACCIDENTES ELIMINADOS: ', DATA_BORRADO_INVOLUCRADOS
         print cur.execute(SQL3)
         DATA_BORRADO_MEDICIONES=cur.fetchone()
         print 'CANTIDAD DE MEDICIONES ELIMINADAS: ', DATA_BORRADO_MEDICIONES
