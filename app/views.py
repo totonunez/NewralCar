@@ -178,13 +178,13 @@ def actualizartelefono():
 def crear():
 	return render_template('crear_inicio.html')
 
-@app.route('/CREAR_SENSOR',methods=['GET','POST'])
+@app.route('/CREAR_MEDICION',methods=['GET','POST'])
 def crearsensor():
 	if request.method == 'POST':
 		idsensor = resquest.form['ID_SENSOR']
-		nombresensor = request.form['NOMBRE']
-		presicion = request.form['PRESICION']
-		unidad = request.form['TIPO_UNIDAD']
+		patentese = request.form['PATENTE']
+		hora = request.form['HORA']
+		fecha = request.form['TIPO_UNIDAD']
 		try:
 			sql= """insert into sensores values(%s, %s, %s, %s) """%(idsensor, nombresensor, presicion, unidad)
 			cur.execute(sql)
@@ -209,7 +209,7 @@ def crearauto():
 		pasajeros = request.form['MAXIMO_PASAJEROS']
 		aro = request.form['NUM_ARO']
 		try:
-			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
+			sql = """insert into autos values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """%(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("crear_ok.html", nombre="nombre")
@@ -229,7 +229,7 @@ def crearcliente():
 		telefonod = request.form['TELEFONO']
 		url = request.form['URL']
 		try:
-			sql = """insert into sensores values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
+			sql = """insert into clientes values(%s,%s,%s,%s,%s,%s,%s) """%(rutd,digito,nombred,apellidod,email,telefonod,url)
 			cur.execute(sql)
 			conn.commit()
 			return render_template("crear_exito.html", nombre="nombre")
