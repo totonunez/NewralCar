@@ -21,10 +21,23 @@
                             <p style="color:#ff0000;">PRECAUCION: ES ILEGAL ELIMINAR UNA MULTA </p>
                             <br>
                             <form action="/ELIMINAR_DEBE">
-                            ID_MULTA:<br>
-                            <input type="text" name="ID">
+                            RUT:<br>
+                            <input type="text" name="RUT">
                             <br>
                             <br>
+                            ID DE MULTA:<br>
+                                    <select name="IDMULTA">
+                                      <option value=0>MULTA POR MAL ESTACIONAMIENTO</option>
+                                      <option value=1>MULTA POR NO PAGO DE PARKING</option>
+                                      <option value=2>MULTA POR NO TENER DOCUMENTOS DEL AUTO</option>
+                                      <option value=3>MULTA POR PASO EN ROJO</option>
+                                      <option value=4>MULTA POR NO PARAR EN PARE</option>
+                                      <option value=5>MULTA POR EXCESO DE VELOCIDAD</option>
+                                      <option value=6>MULTA POR CHALECO REFLECTANTE</option>
+                                      <option value=7>MULTA POR NO CEDER PASO</option>
+                                      <option value=8>MULTA POR ESTADO DE EBRIEDAD</option>
+                                    </select>
+                                  <br><br>                
                             <input type="submit" value="BORRAR">
                           </form> 
                           
