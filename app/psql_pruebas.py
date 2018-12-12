@@ -14,7 +14,7 @@ def ELIMINAR_CLIENTE(RUT):
             WHERE autos.rut='%s';"""%(RUT)
     print SQL
     cur.execute(SQL)
-    PATENTE=cur.fetchall()
+    PATENTE=cur.fetchone()
     print 'SE ELIMINARAN LOS ELEMENTOS DE LA PATENTE: ', PATENTE 
     SQL2=""" DELETE FROM involucrados
              WHERE involucrados.patente='%s';"""%(PATENTE)
