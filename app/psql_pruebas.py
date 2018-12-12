@@ -86,9 +86,11 @@ def ELIMINAR_AUTO(PATENTE):
     except:
         print 'ERROR EN EL INTENTO DE ELIMINAR EN INVOLUCRADOS, MEDICIONES, AUTOS, CLIENTES'
 
-def ELIMINAR_MULTA(RUT):
+def ELIMINAR_MULTA(RUT, ID):
     SQL5=""" DELETE FROM debe
-             WHERE debe.rut='%s' RETURNING *;"""%(RUT)
+             WHERE debe.rut='%s'
+             AND debe.id_penalizacion=%s
+             RETURNING *;"""%(RUT, ID)
     print SQL5
     try:
         cur.execute(SQL5)
@@ -116,9 +118,9 @@ def ACTUALIZAR_DUENO(RUT, PATENTE):
         print DATA_PATENTE_RUT
         try:
             cur.execute(SQL2)
-            DATA_ACTUALIZACION_DE_DUENO_AUTO=cur.fetchall()
+            #DATA_ACTUALIZACION_DE_DUENO_AUTO=cur.fetchall()
             conn.commit()
-            print 'SE ACTUALIZAN LA SIGUIENTE CANTIDAD DE ELEMENTOS: ',DATA_ACTUALIZACION_DE_DUENO_AUTO
+            print 'SE ACTUALIZAN CORRECTAMENTE LOS ELEMENTOS'#,DATA_ACTUALIZACION_DE_DUENO_AUTO
         except:
             print 'ERROR EN EL INTENTO DE ACTUALIZAR, POSIBLEMENTE EL RUT NUEVO NO EXISTE EN EL SISTEMA'
     else:
@@ -143,9 +145,9 @@ def ACTUALIZAR_FECHA_DEBE(RUT, FECHA_NUEVA, ID_MULTA):
     if DATA_CLIENTE_MULTA:
         try:
             cur.execute(SQL2)
-            DATA_MULTA_UPDATE=cur.fetchall()
+            #DATA_MULTA_UPDATE=cur.fetchall()
             conn.commit()
-            print 'SE ACTUALIZAN LA SIGUIENTE CANTIDAD DE ELEMENTOS: ',DATA_MULTA_UPDATE
+            print 'SE ACTUALIZAN LA SIGUIENTE CANTIDAD DE ELEMENTOS: '#,DATA_MULTA_UPDATE
         except:
             print 'ERROR EN EL INTENTO DE ACTUALIZAR FECHAS DE MULTAS'
     else:
@@ -168,9 +170,9 @@ def ACTUALIZAR_TELEFONO(RUT, TELEFONO):
         print DATA_TELEFONO_CLIENTE
         try:
             cur.execute(SQL2)
-            DATA_TELEFONO_UPDATE=cur.fetchall()
+            #DATA_TELEFONO_UPDATE=cur.fetchall()
             conn.commit()
-            print 'SE ACTUALIZAR LA SIGUIENTE CANTIDAD DE TELEFONOS: ', DATA_TELEFONO_UPDATE
+            print 'SE ACTUALIZAR LA SIGUIENTE CANTIDAD DE TELEFONOS: '#, DATA_TELEFONO_UPDATE
         except:
             print 'ERROR EN EL INTENTO DE ACTUALIZAR EL TELEFONO'
     else:
