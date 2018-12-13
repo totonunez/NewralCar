@@ -79,7 +79,7 @@ def borrarcliente():
 @app.route('/ELIMINAR_DEBE',methods=['GET', 'POST'])
 def eliminardebe():
 	if request.method == 'POST':
-		iddebe = request.form['ID_MULTA']
+		iddebe = request.form['IDMULTA']
 		rutdebe = request.form['RUT']
         	if P.ELIMINAR_MULTA(rutdebe, iddebe):
             		return render_template("eliminacion_ok.html")
