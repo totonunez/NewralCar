@@ -255,10 +255,21 @@ def CONSULTAS_GPS(PATENTE):
     except:
         return []
 
-def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR, FECHA):
-    SQL ="""
-    SELECT mediciones.patente, mediciones.hora
-    FROM mediciones where mediciones.patente=%s 
-    AND mediciones.id_sensor =%s
-    AND mediciones.fecha = %s
-    ORDER BY mediciones.hora;"""%(PATENTE, IDSENSOR, FECHA)
+def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR):
+    SQL ="""SELECT mediciones.hora, mediciones.valor
+            FROM mediciones 
+            WHERE mediciones.id_sensor=%s 
+            AND mediciones.patente=%s 
+            AND mediciones.fecha=(SELECT max(t2.fecha) 
+                                  FROM (SELECT mediciones.fecha as fecha 
+                                        FROM mediciones 
+                                        WHERE mediciones.patente=%s) as t2 )
+            ORDER BY mediciones.hora;"""%(IDSENSOR,PATENTE,PATENTE)
+    print SQL
+    try:
+        cur.execute(SQL)
+        DATA_SENSOR_AUTO=cur.fetchall()
+        print 'DATA OK'
+        return DATA_SENSOR_AUTO
+    except
+        return []
