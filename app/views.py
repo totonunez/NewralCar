@@ -219,7 +219,18 @@ def verisarubicacion():
 	if request.method == 'POST':
 		patente = request.form['PATENTE']
 		id = request.form['ID']
-		data=P.CONSULTAS_MEDICIONES(patente,id)
+		l=P.CONSULTAS_MEDICIONES(patente,id)
+		t=len(l)
+		first='[{y:'
+		medio='}, {y:'
+		end='}]'
+		data=first
+		for i in range(t):
+			if i is 39:
+				data=data+str(l[i][1])
+			else:
+				data=data+str(l[i][1])+medio
+		data=data+end
 		print data
 		try:
 			return render_template("revisar_exito.html",data=data)
