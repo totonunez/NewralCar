@@ -219,7 +219,7 @@ def verisarubicacion():
 	if request.method == 'POST':
 		patente = request.form['PATENTE']
 		id = request.form['ID']
-		l=P.CONSULTAS_MEDICIONES(patente,id)
+		l,TYPE_SENSOR=P.CONSULTAS_MEDICIONES(patente,id)
 		t=len(l)
 		first='[{y:'
 		medio='}, {y:'
@@ -233,7 +233,7 @@ def verisarubicacion():
 		data=data+end
 		print data
 		try:
-			return render_template("revisar_exito.html",data=data)
+			return render_template("revisar_exito.html",data=data,TYPE_SENSOR=TYPE_SENSOR)
 		except:
 			return render_template("revisar_fallo.html")
 	else:
