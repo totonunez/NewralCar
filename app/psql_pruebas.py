@@ -248,7 +248,7 @@ def CONSULTAS_GPS(PATENTE):
     print SQL
     try:
         cur.execute(SQL)
-        DATA_GPS_CONFIDENCIAL=cur.fetchall().............................................0
+        DATA_GPS_CONFIDENCIAL=cur.fetchall()
         conn.commit()
         print 'GPS OK'
         return DATA_GPS_CONFIDENCIAL
