@@ -197,15 +197,15 @@ def GPS():
     if request.method=='POST':
         patente = request.form['PATENTE']
         clave=request.form['PASS']
-        if clave is 'HOLAMUNDO':
-		try:
-			data=P.CONSULTAS_GPS(patente)
-			if data:
-				return render_template("gps_tablas.html",data=data)
-			else:
-				return render_template("gps_error.html")
-		except:
-			return render_template("gps_error.html")	
+        if clave == 'HOLAMUNDO':
+		#try:
+		data=P.CONSULTAS_GPS(patente)
+		if data:
+			return render_template("gps_tablas.html",data=data)
+		else:
+			return render_template("gps_error.html")
+		#except:
+		#	return render_template("gps_error.html")	
         else:
             return render_template("gps_error.html")
     else:
