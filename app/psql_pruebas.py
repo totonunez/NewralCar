@@ -233,3 +233,10 @@ def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
     except:
         print 'ERROR EN EL INGRESO DE UN CLIENTE NUEVO'
         return False
+
+def CONSULTAS_GPS(PATENTE):
+    SQL="""SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud
+           FROM mediciones 
+           WHERE mediciones.patente='%s'
+           GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente 
+           ORDER BY  mediciones.fecha, mediciones.hora;
