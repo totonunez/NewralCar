@@ -218,8 +218,7 @@ def GPS():
 def verisarubicacion():
 	if request.method == 'POST':
 		patente = request.form['PATENTE']
-		sensor_id = request.form['SENSOR_ID']
-		fecha_medicion = request.form['FECHA']
+		sensor_id = request.form['SENSORID']
 		try:
 			return render_template("revisar_exito.html")
 		except:
