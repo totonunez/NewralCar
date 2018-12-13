@@ -20,11 +20,11 @@
                             <p style="color:#ff0000;">CUIDADO: INFORMACION CONFIDENCIAL</p>
                               <table>
                                   <tr>
-                                  <th>PATENTE</th>
-                                  <th>FECHA</th>
-                                  <th>HORA</th>
-                                  <th>LATITUD</th>
-                                  <th>LONGITUD</th>
+                                  <th>PATENTE </th>
+                                  <th>FECHA </th>
+                                  <th>HORA </th>
+                                  <th>LATITUD </th>
+                                  <th>LONGITUD </th>
                                   </tr>
                                   {% for dict_item in data %}
                                 <tr>
@@ -32,6 +32,7 @@
                                     <td>{{dict_item[1]}}</td>
                                     <td>{{dict_item[2]}}</td>
                                     <td>{{dict_item[3]}}</td>
+                                    <td>{{dict_item[4]}}</td>
 
                                   </tr>
                                   {% endfor %}
