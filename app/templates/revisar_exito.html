@@ -4,7 +4,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">ACTUALIZAR DATOS</h1>
+            <h1 class="page-header">DESPLIEGE DATA DE  {{TYPE_SENSOR}}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,22 +13,32 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <p>SELECCIONE LA OPCION DE ACTUALIZAR</p>
+                    <p>GRAFICA DE ULTIMO DIA</p>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <form action="/ACTUALIZAR_DUENO">
-                              <input type="submit" value="ACTUALIZAR CLIENTE">
-                            </form>
-                            <br>
-                            <form action="/ACTUALIZAR_FECHADEBE">
-                              <input type="submit" value="ACTUALIZAR FECHA MULTA">
-                            </form>
-                            <br>
-                            <form action="/ACTUALIZAR_TELEFONO">
-                              <input type="submit" value="ACTUALIZAR TELEFONO">
-                            </form>
+                            <script>
+                            window.onload = function () {
+                            var chart = new CanvasJS.Chart("chartContainer", {
+	                        animationEnabled: true,
+	                        theme: "light2",
+	                        title:{
+		                    text: "GRAFICA DE LINEA"
+	                        },  
+	                        axisY:{
+		                    includeZero: false
+	                        },
+	                        data: [{        
+		                        type: "line",       
+		                        dataPoints: [{ y: 450 },{ y: 414},{ y: 520},{ y: 460 },{ y: 450 },{ y: 500 },{ y: 480 },{ y: 480 },{ y: 410},{ y: 500 },{ y: 480 },{ y: 510 }]
+	                               }]
+                            });
+                            chart.render();
+                                }
+                        </script>
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                             <br>
                             <form action="/">
                               <input type="submit" value="VOLVER">
