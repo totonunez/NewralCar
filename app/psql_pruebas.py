@@ -248,7 +248,7 @@ def CONSULTAS_GPS(PATENTE):
     print SQL
     try:
         cur.execute(SQL)
-        DATA_GPS_CONFIDENCIAL=cur.fetchall()
+        DATA_GPS_CONFIDENCIAL=cur.fetchall().............................................0
         conn.commit()
         print 'GPS OK'
         return DATA_GPS_CONFIDENCIAL
@@ -259,26 +259,17 @@ def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR):
     SQL ="""SELECT mediciones.hora, mediciones.valor
             FROM mediciones 
             WHERE mediciones.id_sensor=%s 
-            AND mediciones.patente='%s' 
+            AND mediciones.patente=%s 
             AND mediciones.fecha=(SELECT max(t2.fecha) 
                                   FROM (SELECT mediciones.fecha as fecha 
                                         FROM mediciones 
-                                        WHERE mediciones.patente='%s') as t2 )
+                                        WHERE mediciones.patente=%s) as t2 )
             ORDER BY mediciones.hora;"""%(IDSENSOR,PATENTE,PATENTE)
     print SQL
-
-    SQL2="""SELECT sensores.nombre 
-            FROM sensores
-            WHERE sensores.id_sensor=%s;"""%(IDSENSOR)
-    
     try:
         cur.execute(SQL)
         DATA_SENSOR_AUTO=cur.fetchall()
         print 'DATA OK'
-        conn.commit()
-        cur.execute(SQL2)
-        DATA_NOMBRE_SENSOR=cur.fetchone()
-        conn.commit()
-        return DATA_SENSOR_AUTO, DATA_NOMBRE_SENSOR
-    except:
-        return [], DATA_NOMBRE_SENSOR
+        return DATA_SENSOR_AUTO
+    except
+        return []
