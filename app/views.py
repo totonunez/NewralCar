@@ -198,11 +198,18 @@ def GPS():
         patente = request.form['PATENTE']
         clave=request.form['PASS']
         if clave is 'HOLAMUNDO':
-            pass
+		try:
+			data=P.CONSULTAS_GPS(patente)
+			if data:
+				return render_template("gps_tablas.html",data=data)
+			else:
+				return render_template("gps_error.html")
+		except:
+			return render_template("gps_error.html")	
         else:
-            pass # error de credencial
+            return render_template("gps_error.html")
     else:
-        pass
+        return render_template("gps_inicio.html")
 
 
 @app.route('/REVISAR_MEDICIONES',methods=['GET','POST'])
