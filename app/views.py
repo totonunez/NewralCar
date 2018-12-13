@@ -222,7 +222,7 @@ def verisarubicacion():
 		data=P.CONSULTAS_MEDICIONES(patente,id)
 		print data
 		try:
-			return render_template("revisar_exito.html")
+			return render_template("revisar_exito.html",data=data)
 		except:
 			return render_template("revisar_fallo.html")
 	else:
