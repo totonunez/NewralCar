@@ -197,7 +197,9 @@ def GPS():
     if request.method=='POST':
         patente = request.form['PATENTE']
         clave=request.form['PASS']
+	print clave
         if clave == 'HOLAMUNDO':
+		print 'true'
 		#try:
 		data=P.CONSULTAS_GPS(patente)
 		if data:
