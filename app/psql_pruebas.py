@@ -271,5 +271,5 @@ def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR):
         DATA_SENSOR_AUTO=cur.fetchall()
         print 'DATA OK'
         return DATA_SENSOR_AUTO
-    except
+    except:
         return []
