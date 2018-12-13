@@ -151,7 +151,7 @@ def crearauto():
 		pasajeros = request.form['MAXIMO_PASAJEROS']
 		aro = request.form['NUM_ARO']
         	if P.INGRESAR_AUTO_NUEVO(patentec,rutc,largoc,anchoc,altoc,peso_neto,combustible,tipo_auto,pasajeros,aro):
-            		return render_template("crear_ok.html", nombre="nombre")
+            		return render_template("crear_exito.html", nombre="nombre")
         	else:
             		return render_template("crear_error.html")
 	else:
