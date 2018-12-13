@@ -200,14 +200,14 @@ def GPS():
 	print clave
         if clave == 'HOLAMUNDO':
 		print 'true'
-		#try:
-		data=P.CONSULTAS_GPS(patente)
-		if data:
-			return render_template("gps_tablas.html",data=data)
-		else:
-			return render_template("gps_error.html")
-		#except:
-		#	return render_template("gps_error.html")	
+		try:
+			data=P.CONSULTAS_GPS(patente)
+			if data:
+				return render_template("gps_tablas.html",data=data)
+			else:
+				return render_template("gps_error.html")
+		except:
+			return render_template("gps_error.html")	
         else:
             return render_template("gps_error.html")
     else:
@@ -219,10 +219,12 @@ def verisarubicacion():
 	if request.method == 'POST':
 		patente = request.form['PATENTE']
 		id = request.form['ID']
-		#try:
-		return render_template("revisar_exito.html")
-		#except:
-		#	return render_template("revisar_fallo.html")
+		data=P.CONSULTAS_MEDICIONES(patente,id)
+		print data
+		try:
+			return render_template("revisar_exito.html")
+		except:
+			return render_template("revisar_fallo.html")
 	else:
 		return render_template("revisar_exito.html")
 		#return render_template("visualisar_mediciones.html")
