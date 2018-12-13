@@ -266,10 +266,19 @@ def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR):
                                         WHERE mediciones.patente='%s') as t2 )
             ORDER BY mediciones.hora;"""%(IDSENSOR,PATENTE,PATENTE)
     print SQL
+
+    SQL2="""SELECT sensores.nombre 
+            FROM sensores
+            WHERE sensores.id_sensor=%s;"""%(IDSENSOR)
+    
     try:
         cur.execute(SQL)
         DATA_SENSOR_AUTO=cur.fetchall()
         print 'DATA OK'
-        return DATA_SENSOR_AUTO
+        conn.commit()
+        cur.execute(SQL2)
+        DATA_NOMBRE_SENSOR=cur.fetchone()
+        conn.commit()
+        return DATA_SENSOR_AUTO, DATA_NOMBRE_SENSOR
     except:
-        return []
+        return [], DATA_NOMBRE_SENSOR
