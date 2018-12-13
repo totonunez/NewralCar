@@ -167,10 +167,10 @@ def crearcliente():
 		email = request.form['EMAIL']
 		telefonod = request.form['TELEFONO']
 		url = request.form['URL']
-        	if P.INGRESAR_CLIENTE_NUEVO(rutd,digito,nombred,apellidod,email,telefonod,url):
-            		return render_template("crear_exito.html", nombre="nombre")
-        	else:
-            		return render_template("crear_error.html")
+        if P.INGRESAR_CLIENTE_NUEVO(rutd,digito,nombred,apellidod,email,telefonod,url):
+        		return render_template("crear_exito.html", nombre="nombre")
+        else:
+        		return render_template("crear_error.html")
 	else:
 		return render_template("crear_cliente.html")
 
