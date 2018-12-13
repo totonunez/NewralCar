@@ -236,11 +236,24 @@ def INGRESAR_CLIENTE_NUEVO(RUT, DIGITO, NOMBRE, APELLIDO, EMAIL, TELEFONO, URL):
 
 def CONSULTAS_GPS(PATENTE):
     SQL="""SELECT mediciones.patente, mediciones.fecha, mediciones.hora, mediciones.latitud , mediciones.longitud
-           FROM mediciones 
-           WHERE mediciones.patente='%s'
-           GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente 
-           ORDER BY  mediciones.fecha, mediciones.hora;"""
-
+           FROM mediciones
+           WHERE mediciones.patente='%s' 
+           AND mediciones.fecha=(SELECT max(t2.fecha)
+                                 FROM (SELECT mediciones.fecha as fecha 
+                                       FROM mediciones
+                                       WHERE mediciones.patente='%s') as t2)
+           GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente
+           ORDER BY  mediciones.fecha, mediciones.hora;"""%(PATENTE, PATENTE)
+    
+    print SQL
+    try:
+        cur.execute(SQL)
+        DATA_GPS_CONFIDENCIAL=cur.fetchall()
+        conn.commit()
+        print 'GPS OK'
+        return DATA_GPS_CONFIDENCIAL
+    except:
+        return []
 
 def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR, FECHA):
     SQL ="""
@@ -249,4 +262,3 @@ def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR, FECHA):
     AND mediciones.id_sensor =%s
     AND mediciones.fecha = %s
     ORDER BY mediciones.hora;"""%(PATENTE, IDSENSOR, FECHA)
-           
