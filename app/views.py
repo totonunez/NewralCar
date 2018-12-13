@@ -226,8 +226,8 @@ def verisarubicacion():
 		except:
 			return render_template("revisar_fallo.html")
 	else:
-		return render_template("revisar_exito.html")
-		#return render_template("visualisar_mediciones.html")
+		#return render_template("revisar_exito.html")
+		return render_template("visualisar_mediciones.html")
 
 
 @app.route('/tablas')
