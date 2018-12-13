@@ -218,13 +218,14 @@ def GPS():
 def verisarubicacion():
 	if request.method == 'POST':
 		patente = request.form['PATENTE']
-		sensor_id = request.form['ID']
+		id = request.form['ID']
 		#try:
 		return render_template("revisar_exito.html")
 		#except:
 		#	return render_template("revisar_fallo.html")
 	else:
-		return render_template("visualisar_mediciones.html")
+		return render_template("revisar_exito.html")
+		#return render_template("visualisar_mediciones.html")
 
 
 @app.route('/tablas')
