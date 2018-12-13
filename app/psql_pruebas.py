@@ -259,11 +259,11 @@ def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR):
     SQL ="""SELECT mediciones.hora, mediciones.valor
             FROM mediciones 
             WHERE mediciones.id_sensor=%s 
-            AND mediciones.patente=%s 
+            AND mediciones.patente='%s' 
             AND mediciones.fecha=(SELECT max(t2.fecha) 
                                   FROM (SELECT mediciones.fecha as fecha 
                                         FROM mediciones 
-                                        WHERE mediciones.patente=%s) as t2 )
+                                        WHERE mediciones.patente='%s') as t2 )
             ORDER BY mediciones.hora;"""%(IDSENSOR,PATENTE,PATENTE)
     print SQL
     try:
@@ -271,5 +271,5 @@ def CONSULTAS_MEDICIONES(PATENTE,IDSENSOR):
         DATA_SENSOR_AUTO=cur.fetchall()
         print 'DATA OK'
         return DATA_SENSOR_AUTO
-    except:
+    except
         return []
