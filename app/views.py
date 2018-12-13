@@ -212,11 +212,7 @@ def verisarubicacion():
 		sensor_id = request.form['SENSOR_ID']
 		fecha_medicion = request.form['FECHA']
 		try:
-			sql =
-			cur.execute(sql)
-			mediciones = cur.fetchall()
-			conn.commit()
-			return render_template("revisar_exito.html", mediciones=mediciones)
+			return render_template("revisar_exito.html")
 		except:
 			return render_template("revisar_fallo.html")
 	else:
