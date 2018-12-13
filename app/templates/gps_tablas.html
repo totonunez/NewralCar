@@ -27,15 +27,10 @@
                                   <th>LONGITUD</th>
                                   </tr>
                                   {% for dict_item in data %}
-                                  {% for X,Y,Z,W,U in dict_item %}
-                                  <tr>
-                                      <td>{{X}}</td>
-                                      <td>{{Y}}</td>
-                                      <td>{{Z}}</td>
-                                      <td>{{W}}</td>
-                                      <td>{{U}}</td>
+                                <tr>
+                                      <td>{{dict_item}}</td>
+
                                   </tr>
-                                  {% endfor %}
                                   {% endfor %}
                                   
                               </table>
@@ -61,3 +56,4 @@
 </div>
 
 {% endblock %}
+                                  
