@@ -239,4 +239,10 @@ def CONSULTAS_GPS(PATENTE):
            FROM mediciones 
            WHERE mediciones.patente='%s'
            GROUP BY  mediciones.hora, mediciones.latitud, mediciones.longitud, mediciones.fecha ,mediciones.patente 
-           ORDER BY  mediciones.fecha, mediciones.hora;
+           ORDER BY  mediciones.fecha, mediciones.hora;"""
+
+
+def CONSULTAS_MEDICIONES(MEDICIONES,SENSOR):
+    SQL ="""
+    SELECT mediciones.patente, mediciones.hora FROM mediciones where mediciones.patente=%s  and mediciones.id_sensor =%s and mediciones.fecha = %s ORDER BY mediciones.hora;"""
+    """

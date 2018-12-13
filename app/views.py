@@ -212,7 +212,7 @@ def verisarubicacion():
 		sensor_id = request.form['SENSOR_ID']
 		fecha_medicion = request.form['FECHA']
 		try:
-			sql = """SELECT mediciones.patente, mediciones.hora FROM mediciones where mediciones.patente=%s  and mediciones.id_sensor =%s and mediciones.fecha = %s ORDER BY mediciones.hora;"""%(patente, sensor_id, fecha_medicion)
+			sql =
 			cur.execute(sql)
 			mediciones = cur.fetchall()
 			conn.commit()
