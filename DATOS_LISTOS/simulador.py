@@ -16,7 +16,7 @@ t=[]
 
 c=1
 while True:
-    aux=random(posts2)
+    aux=choice(posts2)
     if aux in t:
         break
     t.append(aux)
