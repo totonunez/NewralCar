@@ -9,7 +9,7 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-		try:
+	try:
 		sql ="""
 		select count(*) from autos;
 		"""
