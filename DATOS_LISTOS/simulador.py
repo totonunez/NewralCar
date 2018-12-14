@@ -19,7 +19,7 @@ while True:
     aux=choice(posts2)
     if aux in t:
         break
-        if aux is []:
+        if aux is '()':
             break
     aux=aux[3:9]
     t.append(aux)
