@@ -19,7 +19,9 @@ while True:
     aux=choice(posts2)
     if aux in t:
         break
+    aux=aux[3:9]
     t.append(aux)
+    print t
     fecha=48888
 
     for x in range(3):
