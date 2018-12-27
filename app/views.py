@@ -9,7 +9,7 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-	
+
 	sql ="""
 	select count(*) from autos;
 	"""
@@ -24,7 +24,7 @@ def index():
 	cur.execute(sql)
 	cantidad_clientes  = cur.fetchall()
 	conn.commit()
-	sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora 
+	sql = """select choques.calle, choques.numeracion, choques.ano,choques.mes,choques.dia, choques.hora 
 	from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk 
 	where kk.cantidad  = (select max(cosas) 
 							from (select count(*) as cosas 
