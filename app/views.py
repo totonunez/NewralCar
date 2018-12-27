@@ -26,16 +26,7 @@ def index():
 		cantidad_clientes  = cur.fetchall()
 		conn.commit()
 
-		sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora 
-		from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk 
-		where kk.cantidad  = (select max(cosas) 
-								from (select count(*) as cosas 
-										from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
-
-		print sql
-		cur.execute(sql)
-		granchoque = cur.fetchall()
-		conn.commit()
+		
 	except:
 		pass
 	
