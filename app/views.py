@@ -33,7 +33,7 @@ def index():
 
 	
 
-	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes,granchoque=granchoque)
+	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes)
 
 
 @app.route('/ELIMINAR',methods=['GET', 'POST'])
