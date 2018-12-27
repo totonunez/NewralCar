@@ -36,6 +36,8 @@ def index():
 		cur.execute(sql)
 		granchoque = cur.fetchall()
 		conn.commit()
+	except:
+		pass
 	
 
 	
