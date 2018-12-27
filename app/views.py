@@ -10,38 +10,30 @@ cur = conn.cursor()
 @app.route('/index')
 def index():
 	try:
-		sql ="""
-		select count(*) from autos;
-		"""
-		print sql 
-		cur.execute(sql)
-		cantidad_auto  = cur.fetchall()
-		conn.commit()
-
-		sql ="""
-		select count(*) from clientes;
-		"""
-		print sql 
-		cur.execute(sql)
-		cantidad_clientes  = cur.fetchall()
-		conn.commit()
-
-		sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora 
-		from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk 
-		where kk.cantidad  = (select max(cosas) 
-								from (select count(*) as cosas 
-										from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
-
-		print sql
-		cur.execute(sql)
-		granchoque = cur.fetchall()
-		conn.commit()
-	except:
-		pass
+	sql ="""
+	select count(*) from autos;
+	"""
+	print sql 
+	cur.execute(sql)
+	cantidad_auto  = cur.fetchall()
+	conn.commit()
+	sql ="""
+	select count(*) from clientes;
+	"""
+	print sql 
+	cur.execute(sql)
+	cantidad_clientes  = cur.fetchall()
+	conn.commit()
+	sql = """select choques.calle, choques.numeracion, choques.fecha, choques.hora 
+	from choques,(select count(*) as cantidad, id_evento from involucrados group by id_evento) as kk 
+	where kk.cantidad  = (select max(cosas) 
+							from (select count(*) as cosas 
+									from involucrados group by id_evento) as jj) and choques.id_evento = kk.id_evento;"""
+	print sql
+	cur.execute(sql)
+	granchoque = cur.fetchall()
+	conn.commit()
 	
-
-	
-
 	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes,granchoque=granchoque)
 
 
