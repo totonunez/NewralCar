@@ -9,7 +9,7 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-	try:
+	
 	sql ="""
 	select count(*) from autos;
 	"""
@@ -33,7 +33,7 @@ def index():
 	cur.execute(sql)
 	granchoque = cur.fetchall()
 	conn.commit()
-	
+
 	return render_template("index.html",cantidad_auto=cantidad_auto,cantidad_clientes = cantidad_clientes,granchoque=granchoque)
 
 
